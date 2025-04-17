@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DevJANGO.App.ViewModels.AvaliacaoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnoLetivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlunoMatriculado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoAvaliacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trimestre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Classe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Turma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Disciplina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Professor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnoLetivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlunoMatriculado.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoAvaliacao.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trimestre.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classe.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turma.NomeTurma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disciplina.NomeDisciplina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Professor.BI)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,52 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.EncarregadoViewModel>
+
+@{
+    ViewData["Title"] = "Lista liberada";
+    Layout = "/Areas/Encarregado/Views/Shared/_LayoutEncarregado.cshtml";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"] de Encarregado</h1>
+
+    <vc:Summary></vc:Summary>
+    <p>
+        <a class="btn btn-info" asp-action="CreateEncarregado">Novo Encarregado</a>
+    </p>
+    <table class="table table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Proficao)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @* @Html.DisplayFor(modelItem => item.Telefone) *@
+                        @this.FormataTelefone(item.Telefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Proficao)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<br />

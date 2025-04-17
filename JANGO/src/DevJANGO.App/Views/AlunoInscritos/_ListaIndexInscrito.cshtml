@@ -1,0 +1,93 @@
+﻿@using DevJANGO.App.Extensions
+@model PagedViewModel<AlunoInscritoViewModel>
+    <table class="table table-hover">
+     
+         <thead class="table-dark">
+        <tr>
+             <th>
+
+            </th>
+            <th>
+                @Html.DisplayName("Nome")
+            </th>
+            <th>
+                @Html.DisplayName("Nascimento")
+            </th>
+            <th>
+                @Html.DisplayName("A. Lectivo")
+            </th>
+           @*  <th>
+                @Html.DisplayName("Género")
+            </th> *@
+            <th>
+                @Html.DisplayName("Classe")
+            </th>
+            <th>
+                @Html.DisplayName("Estado")
+            </th>
+            <th></th>
+        </tr>
+    </thead> 
+    <tbody>
+        @if (Model.List.Count() != 0)
+        {
+            @foreach (var aluno in Model.List.OrderBy(p => p.Nome))
+            {
+                <tr>
+                    <td>
+                    <img src="~/imagens/@aluno.Imagem" alt="@aluno.Imagem" style="width: 100px; height: 90px" />
+                    </td>
+                    <td>
+                       @aluno.Nome
+                    </td>
+                    <td>
+                    @this.FormataData(aluno.Datanascimento)
+                    </td>
+                    <td>
+                        @aluno.AnoLetivo
+                    </td>
+                    <td>
+                       @aluno.NomeClasse
+                    </td>
+                    <td>
+                    @if (aluno.Estado == true)
+                       { 
+                         <span style="color: #0d6efd;">Inscrição Finalizada</span>
+                       }
+                       else
+                       {
+                           <span class="text-warning">Inscrição Pendente</span>
+                       }
+                    </td>
+                    <td class="text-end">
+                        <a class="btn btn-info" asp-controller="AlunoInscritos" asp-action="DetailsEncarregado" asp-route-id="@aluno.Id"><spam class="fa fa-search"></spam></a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+                <span class="text-danger" style="font-size:18px;">Pesquisa não encontrada!</span>
+            </td>
+
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<vc:paginacao modelo-paginado="@Model"></vc:paginacao>
+

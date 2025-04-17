@@ -1,0 +1,251 @@
+﻿@using DevJANGO.App.Extensions
+@model DevJANGO.App.ViewModels.AlunoMatriculadoViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ImprimirVenta</title>
+    <style>
+        .contenedor {
+            width: 900px !important;
+            height: 842px !important;
+            margin: auto;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        p.title {
+            font-weight: bold;
+        }
+
+        p.title2 {
+            font-weight: bold;
+            color: #03A99F;
+            font-size: 20px;
+        }
+
+        p.text {
+            font-size: 15px;
+            font-weight: 100;
+            color: #858585;
+        }
+
+        p {
+            margin: 0px
+        }
+
+        .tbth {
+            text-align: left;
+        }
+
+        table.tbproductos {
+            border-collapse: separate;
+            border-spacing: 4px;
+        }
+
+        .h1Matricula {
+            border-top: 1px solid #5D6975;
+            border-bottom: 1px solid #5D6975;
+            color: white;
+            background-color: #03A99F;
+            font-size: 2.4em;
+            line-height: 1.4em;
+            font-weight: normal;
+            text-align: center;
+            margin: 0 0 20px 0;
+            font-size: 20px;
+        }
+
+        table.tbproductos thead tr th {
+            background-color: #03A99F;
+            padding: 10px;
+            font-size: 15px;
+            color: white;
+        }
+
+        table.tbproductos tbody tr td {
+            padding: 10px;
+        }
+
+        .item {
+            font-size: 15px;
+            font-weight: 100;
+            color: #757575;
+        }
+
+        .item-2 {
+            font-size: 15px;
+            font-weight: bold;
+            color: #757575;
+        }
+
+        .item-3 {
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #03A99F;
+            color: white;
+        }
+
+        .td-item {
+            border-bottom: 2px solid #E8E8E8 !important;
+        }
+
+        footer {
+            color: #5D6975;
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            bottom: 0;
+            padding: 8px 0;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <div style="text-align: center;">
+            <img src="~/imagens/logo/logo-Jango.png" style="width: 40px; height:40px;" />
+            <p class="title">JANGO DA INTELIGÊNCIA</p>
+            <p class="text">Recibo de Matricula</p>
+        </div>
+        <table style="width:100%">
+            <tr>
+                <td>
+                   @*  <img src="~/imagens/logo/logo-Jango.png" style="width: 60px;" /> *@
+                    <img src="~/imagens/@Model.Imagem" alt="@Model.Imagem" style="width: 60px; height:60px;" />
+                </td>
+                <td style="text-align:right">
+                    <table style="margin-right:0;margin-left:auto">
+                        <img src="~/imagens/logo/logo-Jango.png" style="width: 40px; height:40px;" />
+                        @* <img src="~/imagens/@Model.Imagem" alt="@Model.Imagem" style="width: 40px; height:40px;" /> *@
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <table style="width:100%">
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td><p class="title">Nome do Aluno</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="text">@Model.Nome</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="text"><small class="title">Idade: </small> @Model.Idade</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="text"><small class="title">Documento: </small> @Model.NumDocumento</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="text"><small class="title">Número: </small> @Model.CodigoAluno</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="text"><small class="title">Ano Lectivo: </small> @Model.AnoLetivo</p></td>
+                        </tr>
+                    </table>
+                </td>
+
+            </tr>
+        </table>
+
+        <h1 class="h1Matricula">DESCRIÇÃO DA MATRICULA</h1>
+        @* Valor da Matricula *@
+        <table style="width:100%">
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td><p><small class="title" style="font-weight: bold;">Classe: </small> @Model.NomeClasse</p></td>
+                        </tr>
+                        <tr>
+                            <td><p><small class="title" style="font-weight: bold;">Turma: </small> @Model.NomeTurma</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="title" style="font-size: 20px;color:#0b0c0c;"><small class="title">Valor da Matricula: </small> @this.FormatoMoeda(Model.ValorDaMatricula)</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="text" style="font-size: 20px;"><small class="title">Data da Matricula: </small> @this.FormataData(Model.DataCadastro)</p></td>
+                        </tr>
+                        
+                    </table>
+                </td>
+            </tr>
+        </table>
+        @* Meses Pago no acto da matricula *@
+        <div style="text-align:center;font-size: 20px;"><span>Meses Pago no acto da matricula</span></div>
+        <table class="tbproductos" style="width:100%">
+            <thead>
+                <tr>
+                    <th class="tbth">Mês</th>
+                    <th class="tbth">Número de Meses</th>
+                    <th class="tbth">Preço</th>
+                    <th class="tbth">Valor Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    @foreach (var item in Model.PropinaDetalhe)
+                    {
+                        <tr>
+                            <td class="td-item"><p class="item">@item.DescricaoPropina</p></td>
+                            <td class="td-item"><p class="item">1</p></td>
+                            <td class="td-item"><p class="item">@this.FormatoMoeda(item.PrecoPropina)</p></td>
+                            <td class="td-item"><p class="item">@this.FormatoMoeda(item.PrecoPropina)</p></td>
+                        </tr>
+
+                    }
+                }
+                <tr>
+                 <td colspan="2" rowspan="3">
+                  </td>
+                  <td class="td-item">
+                  <p class="item-2">Sub Total</p>
+                  </td>
+                  <td class="item-3">
+                  <p>
+                       @this.FormatoMoeda(Model.PagamentoPropinaDetalhe.FirstOrDefault().TotalPago)
+                  </p>
+                  </td>
+                </tr>
+                <tr>
+                    <td class="td-item">
+                        <p class="item-2">Desconto</p>
+                    </td>
+                    <td class="item-3">
+                        <p>
+                            @this.FormatoMoeda(Model.ValorDesconto)
+                        </p>
+                    </td>
+                </tr>
+                  <tr>
+                <td class="item-3">
+                <p>Total</p>
+                </td>
+                <td class="item-3">
+                        <p>@this.FormatoMoeda(Model.PagamentoPropinaDetalhe.FirstOrDefault().TotalPago - Model.ValorDesconto)</p>
+                </td>
+                </tr> 
+            </tbody>
+        </table>
+        <br />
+        <br />
+        <footer>
+            <p class="h1Matricula">Nota informativa sobre o estatuto Pedagógico e Financeiro da Instituição</p>
+        </footer>
+    </div>
+
+</body>
+</html>

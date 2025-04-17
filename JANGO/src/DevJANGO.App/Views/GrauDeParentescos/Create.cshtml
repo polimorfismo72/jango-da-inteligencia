@@ -1,0 +1,30 @@
+﻿@model DevJANGO.App.ViewModels.GrauDeParentescoViewModel
+
+@{
+    ViewData["Title"] = "Grau De Parentesco";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+    <div class="row">
+
+        <form enctype="multipart/form-data" asp-action="Create">
+            <vc:Summary></vc:Summary>
+            <div class="form-group">
+                <label asp-for="NomeGrauParentesco" class="control-label"></label>
+                <input asp-for="NomeGrauParentesco" class="form-control" />
+                <span asp-validation-for="NomeGrauParentesco" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin:5px;">
+                <input type="submit" value="Adicionar" class="btn btn-success" />
+                <a class="btn btn-info" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

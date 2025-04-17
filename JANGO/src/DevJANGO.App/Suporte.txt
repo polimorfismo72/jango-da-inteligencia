@@ -1,0 +1,200 @@
+﻿
+21 000--taxi
+13 000--alimentação
+VI,AD,EX,DG
+
+Trabalhar na alteração das claims
+-----As claims--------
+  Tipo                             Valor
+AlunoInscritos	                  VI,AD,DG
+AlunoMatriculados	              VI,AD,DG	
+Administrador	                  ADM
+FuncionarioCaixa	              VI,AD	
+Encarregados	                  VI,AD,DG	
+Professores	                      VI,AD,DG
+Classes	                          VI,AD,DG	
+Disciplinas		                  VI,AD,DG
+ProfessorDisciplinaClasses        VI,AD,DG
+Turmas                            VI,AD,EX
+	
+
+Produtos                          VI,AD,DG
+PagamentoPropinas                 AD,VI,EX
+AplicaMultas                      VI,AD
+-------------------------------
+--PagamentoPropinas=Pedido
+--Propinas=PedidoItem
+-------------V-----------------
+  --Delete Propinas
+  --Insert PagamentoPropinas
+  --Insert Propinas
+---------------------------------
+USE [JANGOBD]
+GO
+DELETE FROM [dbo].[Propinas]
+GO
+DELETE FROM [dbo].[PagamentoPropinas]
+GO
+DELETE FROM [dbo].[AlunoMatriculados]
+GO
+--DELETE FROM [dbo].[AlunoInscritos]
+--GO
+UPDATE [dbo].[Turmas]
+   SET [NumDeVagas] = 45
+GO
+---------------------------------------------
+USE [TESTE_JANGOBD_Restore]
+GO
+DELETE FROM [dbo].[Propinas]  where AlunoMatriculadoId = '0AE84283-A8EF-47C2-3B36-08DD2E4471A9'
+GO
+DELETE FROM [dbo].[PagamentoPropinas]  where AlunoMatriculadoId = '0AE84283-A8EF-47C2-3B36-08DD2E4471A9'
+GO
+DELETE FROM [dbo].[AlunoMatriculados]  where Id = '0AE84283-A8EF-47C2-3B36-08DD2E4471A9'
+GO
+DELETE FROM [dbo].[AlunoInscritos] where Id ='8B0935DE-5CE7-4DFF-2973-08DCB88D8067'
+GO
+UPDATE [dbo].[Turmas]
+   SET [NumDeVagas] = 20  where [Id] ='77F7334E-8CCE-42D0-CE7B-08DCA97A0D88'
+GO
+
+1- Ao fazer novo registo de usuário deve salvar automaticamente na tebela de Funcionário(usuario); Ok
+2- Ao fazer Alterar registo de usuário deve Alterar automaticamente na tebela de Funcionário(usuario);
+3- Ao apagar usuário deve apagar automaticamente na tebela de Funcionário(usuario);
+4- No AlunoInscritosController  faltam os MÉTODOS PARA EDITAR e PARA EXCLUIR
+5- Verificar a o CRUD de Matricula porque a redução de do numero de vagas não está bem 
+=================== ========================= GUID ========================== ============================
+  if (!ModelState.IsValid)
+  {
+      foreach (ModelStateEntry modelstate in ViewData.ModelState.Values)
+      {
+          foreach (ModelError modelError in modelstate.Errors)
+          {
+              string errormassage = modelError.ErrorMessage;
+          }
+      }
+      return View(alunoMatriculadoIniciacao);
+  }
+==================== ======================== GUID =========================== ===========================
+IndexIniciacao
+IndexEnsinoPrimario
+IndexICiclo
+IndexIICicloFisicasBiologica
+IndexIICicloEconomicaJuridica
+
+
+CreateEnsinoPrimario
+CreateICiclo
+CreateIICicloEconomicaJuridica
+CreateIICicloFisicasBiologica
+
+ObterAlunoInscritoEncarregaosNiveisAreaGrauIniciacao
+ObterAlunoInscritoEncarregaosNiveisAreaGrauEnsinoPrimeiro
+ObterAlunoInscritoEncarregaosNiveisAreaGrauICiclo
+ObterAlunoInscritoEncarregaosNiveisAreaGrauIICicloFb
+ObterAlunoInscritoEncarregaosNiveisAreaGrauIICicloEj
+
+lista-de-todos-alunos-inscritos
+lista-de-alunos-inscritos-na-iniciacao
+lista-de-alunos-inscritos-no-ensino-primario
+lista-de-alunos-inscritos-no-primeiro-ciclo
+lista-de-alunos-inscritos-no-segundo-ciclo-fb
+lista-de-alunos-inscritos-no-segundo-ciclo-ej
+
+nova-inscricao-para-iniciacao
+nova-inscricao-para-ensino-primario
+nova-inscricao-para-o-primeiro-ciclo
+nova-inscricao-para-o-segundo-ciclo-fb
+nova-inscricao-para-o-segundo-ciclo-ej
+
+
+nova-matricula-para-iniciacao
+nova-matricula-para-ensino-primario
+nova-matricula-para-primeiro-ciclo
+nova-matricula-para-segundo-ciclo-fb
+nova-matricula-para-segundo-ciclo-ej
+
+  Layout = "_ListaAlunoInscritoLayout";
+
+
+
+
+
+
+
+
+
+
+47D0D75C-D002-4AB5-B3D1-6F6F3F5C93D5
+4D3F72B4-4BE5-4BE1-908F-16F6069FAFB0
+15030026-7A0B-4D4D-B006-C37DDF40116C
+3BC7753D-68F3-4D90-BEAD-6E029F7690EB
+E090B641-BB4C-4976-A8E3-5C1D2EC099CA
+25649772-3643-434A-BE3B-91A60E9BCB59
+82FC35C2-D8A0-4868-8445-A26CDC4102AC
+E42F697F-E12A-4814-986E-096D8D692F72
+D3E3D53F-02FC-4B42-8947-B6A5AAA88425
+8E37738D-A246-4465-A19A-1AF5E9364D4A
+07698616-D573-4DEB-BCBA-C990A7B727B3
+A39554C8-EC4B-4D81-B0B3-0F56F8D34BA7
+0AB8DE63-9650-4B51-869A-F9CD3779865D
+2A6B045E-A1BC-49DC-AAF5-85C404A02944
+A6FE4147-7DB4-495B-B7BA-E30EF6BD8494
+97D77875-67B0-4759-BCE4-9DB6C90CDEB1
+4A47A76E-1BD4-42E8-A8C4-D86440D055FB
+6C2B236C-6590-40AC-8A07-F15EF7DBC135
+5F81FB64-AEE5-49C9-9085-0E6408B27C8E
+6A16B2E1-45BA-4CC1-BE44-416757F4ECB8
+286B33AA-2218-4B0D-B306-3CA2ABB65A7A
+620DB0DB-6955-4B8D-9DDA-125788340895
+A96533BF-ACAE-4F3F-8867-84610205155F
+7B098C19-3070-4961-886E-561EC9C198F6
+41A1185A-DE16-474C-A218-FFB165385167
+3CF424DA-D83B-44DA-9B11-BCCE04C596EA
+91996CCA-97C5-483C-A3A7-78A552C6371C
+E920C7E5-553B-408A-90EC-4ECEEEDC14C4
+CECFE833-22F8-4A45-AE4D-939DBB16A5C8
+2B66BE64-F681-481A-994F-F5657DF5344C
+B5A559DD-711A-4F11-A1C4-5D49717E0607
+C00A7165-E5DC-4E1C-9737-5CF2BD3A869A
+6F63A712-0993-4E6B-B519-4F9CF45D7292
+70944552-7DCB-48FC-AE7F-437DAA26F13F
+3BDA281D-2F64-4AC6-8CB3-CB5634F90CC6
+F8156438-1C53-46FE-8198-F986DE91D0FC
+040EABC1-3C1D-4C31-A1F9-E0A2F0D51698
+93D4CACE-19C5-4E7D-96FD-05E04501B5B0
+C3E3E4E8-27E0-4522-9F78-9B7DDE94C304
+CAD32B6C-2319-47D2-9FAB-AEBD46600A68
+53CA93F5-4959-44B3-A598-E4E4D0DDA578
+58A45990-A5EF-4EF8-9A94-059796DCF736
+90C36F38-C891-4ABD-9D4D-196EAF1F62E9
+C8525461-BCD6-4EFE-AA65-E53F3B70DE4A
+3749B254-EC0F-4CE6-A1A9-79E1263F43E5
+F2A78152-8B49-473C-BD76-492526A7E140
+03F62045-8704-454D-985C-61FD968E421C
+2826A110-FE79-412C-B2D6-96532BB7F1D3
+BF3BECD2-6D7C-41AB-A71F-600422CF1393
+97C63D5F-B285-4869-BC46-4BCD29A82F70
+0D1D7090-9B90-43DB-AB15-37F17466E7F1
+BBD52145-98C1-4321-A5FB-C565C4CCCCEF
+491C30C2-8FCC-4536-B6E0-AD8A92C97F90
+044E96FA-9B43-4F5D-AF54-402E80D5C3E3
+CD5B3BD2-B290-42EC-82DC-6A73240F9A7B
+DB863586-A971-4044-913A-B0B61240F272
+E5D5D143-12B8-4FA2-8BCC-490A0EB75A5F
+============================================TELEFONE==================================================
+
+
+923505034
+923505035
+923505036
+923505037
+923505038
+923505039
+923505040
+923505041
+923505042
+923505043
+923505044
+923505045
+923505046
+923505047

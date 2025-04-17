@@ -1,0 +1,42 @@
+﻿@using DevJANGO.App.Extensions
+@model PagedViewModel<ProdutoViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Produtos";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <vc:Summary></vc:Summary>
+    <div class="row align-items-center" style="margin: 6px;">
+        <div class="row">
+            <div class="col-lg-2 col-sm-2">
+                <a class="btn btn-info" asp-action="Create">Novo Artigo</a>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <p style="margin: 7px;">
+                    @Model.List.Count() artigos
+                </p>
+
+            </div>
+            <div class="col-lg-8 col-sm-8">
+                <form method="get" asp-controller="Produtos" asp-action="Index" class="search">
+                    <div class="input-group w-100">
+                        <input type="text" id="q" name="q" class="form-control" value="@ViewBag.Pesquisa" placeholder="Procure pelo nome do artigo!">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    
+
+<partial name="_ListaProdutos" />
+</div>
+<br />
+<br />

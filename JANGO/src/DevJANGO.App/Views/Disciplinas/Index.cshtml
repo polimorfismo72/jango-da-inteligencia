@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DevJANGO.App.ViewModels.DisciplinaViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Disciplina";
+    Layout = "_ListaDisciplinaLayout";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"] da Iniciação</h1>
+
+    <vc:Summary></vc:Summary>
+
+    <p>
+        <a class="btn btn-info" asp-action="Create">Nova Disciplina</a>
+    </p>
+    <table class="table table-hover">
+        <partial name="_ListaDisciplina" />
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeDisciplina)
+            </td>
+            <td>
+                 @Html.DisplayName("Iniciação")
+            </td>
+            
+            <td class="text-end">
+                <a class="btn btn-warning" asp-controller="Disciplinas" asp-action="Edit" asp-route-id="@item.Id"><spam class="fa fa-pencil-alt"></spam></a>
+                <a class="btn btn-danger" asp-controller="Disciplinas" asp-action="Delete" asp-route-id="@item.Id"><spam class="fa fa-trash"></spam></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+</div>
+<br />
+<br />

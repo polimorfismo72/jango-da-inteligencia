@@ -1,0 +1,24 @@
+﻿@model DevJANGO.App.ViewModels.AlunoInscritoViewModel
+
+@{
+    ViewData["Title"] = "Tem a certeza de que pretende apagar o Candidato";
+}
+<br />
+<div class="container">
+    <vc:Summary></vc:Summary>
+    <h1 class="text-danger">@ViewData["Title"] - @Model.Nome?</h1>
+    <hr />
+    <partial name="_ListaDelete" />
+    
+
+    <div style="padding-top: 5px">
+        <form asp-action="DeleteIICicloFisicasBiologica">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            <a class="btn btn-info" asp-action="IndexIICicloFisicasBiologica">Voltar</a>
+        </form>
+    </div>
+</div>
+
+<br />
+

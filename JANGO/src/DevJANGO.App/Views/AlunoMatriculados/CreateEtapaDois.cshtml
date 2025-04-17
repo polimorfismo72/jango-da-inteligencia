@@ -1,0 +1,68 @@
+﻿@model DevJANGO.App.ViewModels.AlunoMatriculadoViewModel
+
+@{
+    ViewData["Title"] = "Selecione";
+    Layout = "_AlunoMatriculadoLayout";
+}
+<div class="container">
+    <h1>@ViewData["Title"] um Aluno Para Etapa II</h1>
+    <hr />
+    <partial name="_CriarBuscaParaMatriculaEtapaDois" />
+   
+    <div class="row">
+        <form asp-action="CreateEtapaDois">
+
+            <vc:Summary></vc:Summary>
+
+            <input asp-for="AlunoInscrito.Id" value="@TempData["Id"]" type="hidden" />
+            <input asp-for="AlunoInscrito.DataCadastro" value="@TempData["DataCadastro"]" type="hidden" />
+            <input asp-for="AlunoInscrito.Datanascimento" value="@TempData["Datanascimento"]" type="hidden" />
+            <input asp-for="AlunoInscrito.AnoLetivo" value="@TempData["AnoLetivo"]" type="hidden" />
+            <input asp-for="AlunoInscrito.Idade" value="@TempData["Idade"]" type="hidden" />
+            <input asp-for="AlunoInscrito.Codigo" value="@TempData["Codigo"]" type="hidden" />
+            <input asp-for="AlunoInscrito.NiveisDeEnsinoId" value="@TempData["NiveisDeEnsinoId"]" type="hidden" />
+            <input asp-for="AlunoInscrito.EncarregadoId" value="@TempData["EncarregadoId"]" type="hidden" />
+            <input asp-for="AlunoInscrito.GrauDeParentescoId" value="@TempData["GrauDeParentescoId"]" type="hidden" />
+            <input asp-for="AlunoInscrito.AreaDeConhecimentoId" value="@TempData["AreaDeConhecimentoId"]" type="hidden" />
+            <input asp-for="AlunoInscrito.NomeDoPai" value="@TempData["NomeDoPai"]" type="hidden" />
+            <input asp-for="AlunoInscrito.NomeDaMae" value=" @TempData["NomeDaMae"]" type="hidden" />
+            <input asp-for="AlunoInscrito.Imagem" value="@TempData["Imagem"]" type="hidden" />
+            <input asp-for="AlunoInscrito.TipoDocumento" value="@TempData["TipoDocumento"]" type="hidden" />
+            <input asp-for="AlunoInscrito.NumDocumento" value="@TempData["NumDocumento"]" type="hidden" />
+            <input asp-for="AlunoInscrito.EscolaDeOrgigem" value="@TempData["EscolaDeOrgigem"]" type="hidden" />
+         
+            <input asp-for="AlunoInscrito.Sexo" value="@TempData["Sexo"]" type="hidden" />
+            <input asp-for="AlunoInscrito.Endereco" value="@TempData["Endereco"]" type="hidden" />
+            <input asp-for="AlunoInscrito.FuncionarioCaixaId" value="@TempData["FuncionarioCaixaId"]" type="hidden" />
+            
+            <br />
+            <div class="row gx-2">
+                <div class="col-4">
+                    <input asp-for="AlunoInscrito.Nome" value="@TempData["Nome"]" readonly="readonly" class="form-control" />
+                </div>
+              
+                <div class="col-4">
+                    <input value="@TempData["Classe"]" readonly="readonly" class="form-control" />
+                </div>
+            </div>
+              <partial name="_CriarMatriculaIciacao" />
+            <div>
+                &nbsp;
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Ir Para Nova Matricula" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            SetVaga();
+        });
+    </script>
+}

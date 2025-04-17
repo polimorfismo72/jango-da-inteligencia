@@ -1,0 +1,60 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.ClasseViewModel>
+ 
+    <table class="table table-hover">
+        <thead class="table-dark">
+        <tr>
+            <th>
+               @Html.DisplayName("Nome Da Classe")
+            </th>
+            <th>
+               @Html.DisplayNameFor(model => model.PrecoPropina)
+            </th>
+            <th>
+                @Html.DisplayName("Niveis de Ensino")
+            </th>
+             <th>
+                    @Html.DisplayName("Nome Do Curso")
+            </th>
+                <th>
+                    @Html.DisplayName("É classe de Exame?")
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+       <tr>
+           <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+           </td>
+           <td>
+              @this.FormatoMoeda(item.PrecoPropina)
+           </td>
+          <td>
+                @Html.DisplayFor(modelItem => item.NiveisDeEnsino.NomeNiveisDeEnsino)
+           </td>
+           <td>
+                @Html.DisplayFor(modelItem => item.Curso.Nome)
+           </td>
+           <td>
+              @if (item.ClassDeExame == true)
+              {
+                  <span>Sim</span>
+              }
+              else
+              {
+                  <span>Não</span>
+    
+              }
+           </td>
+            <td class="text-end">
+              <a class="btn btn-info" asp-controller="Classes" asp-action="Details" asp-route-id="@item.Id"><spam class="fa fa-search"></spam></a>
+              <a class="btn btn-warning" asp-controller="Classes" asp-action="Edit" asp-route-id="@item.Id"><spam class="fa fa-pencil-alt"></spam></a>
+              <a class="btn btn-danger" asp-controller="Classes" asp-action="Delete" asp-route-id="@item.Id"><spam class="fa fa-trash"></spam></a>
+            </td>
+       </tr>
+    }
+        </tbody>
+    </table>
+ 

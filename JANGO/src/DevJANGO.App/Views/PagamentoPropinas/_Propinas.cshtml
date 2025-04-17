@@ -1,0 +1,56 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.PropinaViewModel>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayName("Mês a pagar")
+            </th>
+            <th>
+                @Html.DisplayName("Classe")
+            </th>
+            <th>
+                @Html.DisplayName("Turma")
+            </th>
+            <th>
+                @Html.DisplayName("Preço")
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(c => c.Situacao == 1))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mes.NomeMes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Classe.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Turma.NomeTurma)
+                </td>
+                <td> 
+                    @this.FormatoMoeda(item.PrecoPropina)
+                </td> 
+                <td class="text-end">
+                    <a style="color:#F21628" asp-controller="PagamentoPropinas"
+                       asp-action="Delete" asp-route-id="@item.Id">
+                    <spam class="fa fa-trash"></spam></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+    <tr>
+    <td colspan="3" class="text-right">Total:</td>
+    <td colspan="9" class="text-end">
+        @*  @Model.Sum(v => (v.PrecoPropina)).ToString("C") *@
+        @this.FormatoMoeda(Model.Sum(v => (v.PrecoPropina)))
+    </td>
+    </tr>
+    </tfoot>
+</table>

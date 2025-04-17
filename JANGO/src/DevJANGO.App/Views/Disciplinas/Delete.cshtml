@@ -1,0 +1,22 @@
+﻿@model DevJANGO.App.ViewModels.DisciplinaViewModel
+ @{
+    ViewData["Title"] = "Eliminar disciplina";
+}
+
+<br />
+<div class="container">
+    <h1 class="text-danger">): Att Excluir!</h1>
+
+    <h1>Tem a certeza de que quer excluir a disciplina de <span class="text-danger">@Model.NomeDisciplina</span>?</h1>
+
+    <hr />
+    <div style="padding-top: 5px">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            <a class="btn btn-info" href="javascript:window.history.back();">Não Pretendo Excluir</a>
+        </form>
+    </div>
+</div>
+<br />
+<br />

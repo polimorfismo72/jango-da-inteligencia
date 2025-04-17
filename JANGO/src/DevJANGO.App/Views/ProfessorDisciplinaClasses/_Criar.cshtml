@@ -1,0 +1,33 @@
+﻿@model DevJANGO.App.ViewModels.ProfessorDisciplinaClasseViewModel
+ 
+      
+            <input type="hidden" asp-for="ProfessorId" />
+            <input type="hidden" asp-for="ClasseId" />
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label asp-for="TelefoneBI" class="control-label"></label>
+                    <input asp-for="TelefoneBI" class="form-control" />
+                    <span asp-validation-for="TelefoneBI" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label asp-for="DisciplinaId" class="control-label"></label>
+                    <select asp-for="DisciplinaId" class="form-control" asp-items="@(new SelectList(Model.Disciplinas, "Id", "NomeDisciplina"))">
+                        <option></option>
+                    </select>
+                    <span asp-validation-for="DisciplinaId" class="text-danger"></span>
+                </div>
+             
+                <div class="form-group col-md-3">
+                    <label asp-for="AnoLetivo" class="control-label"></label>
+                    <input asp-for="AnoLetivo" class="form-control" />
+                    <span asp-validation-for="AnoLetivo" class="text-danger"></span>
+                </div>
+
+            </div>
+            <br />
+       
+    
+ 
+
+ 

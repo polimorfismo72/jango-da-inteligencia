@@ -1,0 +1,53 @@
+﻿@using DevJANGO.App.Extensions
+@model PagedViewModel<AlunoMatriculadoViewModel>
+
+
+<table class="table table-responsive-sm table-hover">
+    <partial name="_CabecalhoIndex" />
+
+    <tbody>
+        @if (Model.List.Count() != 0)
+        {
+            @foreach (var aluno in Model.List.OrderBy(p => p.Nome))
+            @* @foreach (var aluno in Model.List.Where(c => c.Estado == false).OrderBy(p => p.Nome)) *@
+            {
+                <tr>
+                    <td>
+                        <img src="~/imagens/@aluno.Imagem" alt="@aluno.Imagem" style="width: 100px; height: 90px" />
+                    </td>
+                    <td>
+                        @aluno.Nome
+                    </td>
+                    <td>
+                        @aluno.AnoLetivo
+                    </td>
+                    <td>
+                        @aluno.NomeClasse
+                    </td>
+                    <td>
+                        @aluno.NomeClasse
+                    </td>
+                    <td>
+                        @if (aluno.Estado == true)
+                        {
+                            <span style="color: #0d6efd;">Matricula Finalizada</span>
+                        }
+                        else
+                        {
+                            <span class="text-warning">Matricula Pendente</span>
+                        }
+                    </td>
+                    <td class="text-end">
+                        <a class="btn btn-info" asp-controller="AlunoMatriculados" asp-action="Details" asp-route-id="@aluno.Id"><spam class="fa fa-search"></spam></a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <partial name="_PesquisaNaoEncontrada" />
+        }
+    </tbody>
+</table>
+<vc:paginacao modelo-paginado="@Model"></vc:paginacao>
+    

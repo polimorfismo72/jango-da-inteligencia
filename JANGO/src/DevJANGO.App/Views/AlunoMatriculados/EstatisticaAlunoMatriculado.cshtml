@@ -1,0 +1,106 @@
+﻿@model IEnumerable<DevJANGO.App.ViewModels.AlunoMatriculadoViewModel>
+@using DevJANGO.App.Extensions
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string anoLetivo;
+    DateTime agora = DateTime.Today;
+    int ano = agora.Year;
+    int mes = agora.Month;
+    int dia = agora.Day;
+
+    if (mes <= 6 && dia <= 31)
+    {
+        int anoTransato = ano - 1;
+        anoLetivo = $"{anoTransato}-{ano}";
+    }
+    else
+    {
+        int anoAtual = ano + 1;
+        anoLetivo = $"{ano}-{anoAtual}";
+    }
+}
+
+<div class="container">
+
+    <h4>Total de pagamentos de matricula do ano lectivo @anoLetivo : @this.FormatoMoeda(Model.Where(c => c.AnoLetivo == anoLetivo).Select(c => c.ValorDaMatricula).Sum())</h4>
+    <hr />
+    
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Valor em Percentagem:
+                   @Convert.ToInt32((Model.Where(c => c.AnoLetivo == anoLetivo && c.ValorDaMatricula == 0).Count() * 100) / Model.Where(c => c.AnoLetivo == anoLetivo).Count()) %
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Total de Pendentes</h5>
+                    <p class="card-text">
+                        @this.FormatoMoeda(Model.Where(c => c.AnoLetivo == anoLetivo && c.ValorDaMatricula == 0).Select(c => c.ValorDaMatricula).Sum())
+                    </p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-3">
+            <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Valor em Percentagem: 
+                    @Convert.ToInt32(((Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "Iniciação").Count() + Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "Primário").Count()) * 100) / Model.Where(c => c.AnoLetivo == anoLetivo).Count()) %
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Ensino Primário</h5>
+                    <p class="card-text">
+                        @this.FormatoMoeda(Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "Iniciação").Select(c => c.ValorDaMatricula).Sum() + Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "Primário").Select(c => c.ValorDaMatricula).Sum())
+                    </p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-3">
+            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                <div class="card-header">
+                    Valor em Percentagem:
+                    @Convert.ToInt32(((Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa I").Count() + Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa II").Count() + Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa III").Count()) * 100) / Model.Where(c => c.AnoLetivo == anoLetivo).Count()) %
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Praeer</h5>
+                    <p class="card-text">
+                        @this.FormatoMoeda(Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa I").Select(c => c.ValorDaMatricula).Sum() + Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa II").Select(c => c.ValorDaMatricula).Sum() + Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa III").Select(c => c.ValorDaMatricula).Sum())
+                    </p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-3">
+            <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+                <div class="card-header">Valor em Percentagem:
+                    @Convert.ToInt32((Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "I Ciclo").Count() * 100) / Model.Where(c => c.AnoLetivo == anoLetivo).Count()) %
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">I Ciclo</h5>
+                    <p class="card-text">
+                        @this.FormatoMoeda(Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "I Ciclo").Select(c => c.ValorDaMatricula).Sum())
+                    </p>
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;">
+                <div class="card-header">Valor em Percentagem:
+                    @Convert.ToInt32((Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "II Ciclo").Count() * 100) / Model.Where(c => c.AnoLetivo == anoLetivo).Count()) %
+                </div>
+            <div class="card-body">
+                <h5 class="card-title">II Ciclo</h5>
+               <p class="card-text">
+                    @this.FormatoMoeda(Model.Where(c => c.AnoLetivo == anoLetivo && c.NiveisDeEnsino.NomeNiveisDeEnsino == "II Ciclo").Select(c => c.ValorDaMatricula).Sum())
+               </p>
+            </div>
+            </div>
+        </div>
+    </div>
+  
+</div>
+ 

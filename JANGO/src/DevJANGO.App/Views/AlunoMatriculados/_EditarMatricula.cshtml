@@ -1,0 +1,142 @@
+﻿@model DevJANGO.App.ViewModels.AlunoMatriculadoViewModel
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="FuncionarioCaixaId" />
+            <input type="hidden" asp-for="AlunoInscritoId" />
+            <input type="hidden" asp-for="CursoId" />
+            <input type="hidden" asp-for="NiveisDeEnsinoId" />
+            <div>
+                <label>Foto Atual</label><br />
+                <img src="~/imagens/@Model.Imagem" alt="@Model.Imagem" style="width: 100px; height: 120px" />
+            </div>
+            <hr />
+            <div class="row">
+                <div class="form-group col-md-5">
+                    <div style="padding-top:5px">
+                        <label asp-for="ImagemUpload" class="control-label"></label>
+
+                        <div class="custom-file">
+                            <input type="file" class="form-control custom-file-input" id="ImagemUpload" asp-for="ImagemUpload">
+                            <label data-browse="Procurar" style="width: 400px" class="custom-file-label" for="ImagemUpload"></label>
+                            <label style="display: none" id="img_nome"></label>
+                        </div>
+                        <span asp-validation-for="ImagemUpload" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                 <label asp-for="ValorDaMatricula" class="control-label"></label>
+                  <input asp-for="ValorDaMatricula" class="form-control" />
+                  <span asp-validation-for="ValorDaMatricula" class="text-danger"></span>
+                </div>
+              
+                <div class="form-group col-md-3">
+                  <br />
+                  <div class="form-check">
+                      <label class="form-check-label">
+                        @Html.DisplayNameFor(model => model.Bolseiro)  <input class="form-check-input" asp-for="Bolseiro" /> 
+                      </label>
+                  </div>
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="form-group col-md-1">
+                    <label asp-for="ClasseId" class="control-label"></label>
+                    <select asp-for="ClasseId" class="form-control" asp-items="@(new SelectList(Model.Classes, "Id", "Nome"))">
+                        <option></option>
+                    </select> 
+                    <span asp-validation-for="ClasseId" class="text-danger"></span>
+                
+                </div>
+                <div class="form-group col-md-2">
+                    <label asp-for="TurmaId" class="control-label"></label>
+                    <select asp-for="TurmaId" class="form-control"  asp-items="@(new SelectList(Model.Turmas, "Id", "NomeTurma"))">
+                        <option></option>
+                    </select>
+                    <span asp-validation-for="TurmaId" class="text-danger"></span>
+                
+                </div>
+
+                 <div class="form-group col-md-4">
+                     <label class="control-label"></label>
+                     <input id="txtVaga" readonly="readonly" class="form-control" />
+                
+                 </div>
+
+                <div class="form-group col-md-3">
+                    <label asp-for="EncarregadoId" class="control-label"></label>
+                    <select asp-for="EncarregadoId" class="form-control" asp-items="@(new SelectList(Model.Encarregados, "Id", "Nome"))">
+                        <option></option>
+                    </select>
+                     <span asp-validation-for="EncarregadoId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label asp-for="GrauDeParentescoId" class="control-label"></label>
+                    <select asp-for="GrauDeParentescoId" class="form-control" asp-items="@(new SelectList(Model.GrauDeParentescos, "Id", "NomeGrauParentesco"))">
+                        <option></option>
+                    </select>
+                      <span asp-validation-for="GrauDeParentescoId" class="text-danger"></span>
+                </div>
+               
+            </div>
+           <br />
+            <h4>Pagar Propinas</h4>
+            <hr />
+
+            <div class="row">
+             
+             @*   <div class="form-group col-md-4">
+                  <label asp-for="NumeroDeTransacaoDePagamento" class="control-label"></label>
+                  <input asp-for="NumeroDeTransacaoDePagamento" class="form-control" />
+                  <span asp-validation-for="NumeroDeTransacaoDePagamento" class="text-danger"></span>
+               </div> *@
+               <div class="form-group col-md-2">
+                  <label asp-for="ValorDesconto" class="control-label"></label>
+                  <input asp-for="ValorDesconto" class="form-control" />
+                  <span asp-validation-for="ValorDesconto" class="text-danger"></span>
+               </div>
+               
+                 <div class="form-group col-md-3">
+                    <label>Número de Meses a Pagar</label>
+                    <div class="input-group input-spinner">
+                        <select id="QuantidadeMes" name="QuantidadeMes" asp-for="QuantidadeMes" class="form-control">
+                            <option value="0">Nenhum mês Para Bolseiro</option>
+                            <option value="1">Um mês</option>
+                            <option value="2">Dois meses</option>
+                            <option value="3">Três meses</option>
+                            <option value="4">Quatro meses</option>
+                            <option value="5">Cinco meses</option>
+                            <option value="6">Seis meses</option>
+                            <option value="7">Sete meses</option>
+                            <option value="8">Oito meses</option>
+                            <option value="9">Nove meses</option>
+                            <option value="10">Dez meses</option>
+                            <option value="11">Onze meses</option>
+                        </select>
+                    </div>
+                </div>
+
+                 <div class="form-group col-md-3">
+                     <label asp-for="TipoPagamento"></label>
+                     <div>
+                         <input type="radio" value="1" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 1)" /> Transferencia<br />
+                         <input type="radio" value="2" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 2)" /> Deposito <br />
+                         <input type="radio" value="3" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 3)" /> Cash<br />
+                         <input type="radio" value="4" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 4)" /> TPA<br />
+                         <input type="radio" value="5" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 5)" /> Sem Pagamento Para Bolseiro<br />
+                         <span asp-validation-for="TipoPagamento" class="text-danger"></span>
+                     </div>
+                 </div>
+            </div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            SetVaga();
+        });
+    </script>
+}

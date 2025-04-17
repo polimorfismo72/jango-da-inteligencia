@@ -1,0 +1,68 @@
+﻿@using DevJANGO.App.Extensions
+@model DevJANGO.App.ViewModels.ProdutoViewModel
+@{
+    ViewData["Title"] = "Detalhe do Produto - " + Model.Nome + " - 000" + Model.Codigo;
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+  <div>
+        <h4>Informação somente leitura</h4>
+        <hr />
+<div class="row" style="padding-top: 10px">
+    <div class="col-md-6">
+        <dl>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ValorVenda)
+        </dt>
+        <dd class = "col-sm-10">
+         @this.FormatoMoeda(Model.ValorVenda)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.QuantidadeEstoque)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.QuantidadeEstoque)
+        </dd>
+    </dl>
+     
+    </div>
+
+    <div class="col-md-6">
+        <dl>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Ativo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Ativo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DataCadastro)
+            </dd>
+
+        </dl>
+      
+    </div>
+ </div>
+    <div>
+        <a class="btn btn-dark" asp-controller="Produto" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+        <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+    </div>
+</div>
+</div>
+<br />

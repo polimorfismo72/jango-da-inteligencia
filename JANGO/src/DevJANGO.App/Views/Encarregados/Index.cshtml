@@ -1,0 +1,58 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.EncarregadoViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Encarregados";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <vc:Summary></vc:Summary>
+    <p>
+        <a class="btn btn-info" asp-action="Create">Novo Encarregado</a>
+    </p>
+    <table class="table table-hover">
+        <thead class="table-dark">
+            <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proficao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) 
+        {
+         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+               @this.FormataTelefone(item.Telefone)
+                @* @Html.DisplayFor(modelItem => item.Telefone) *@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proficao)
+            </td>
+             <td class="text-end">
+                <a class="btn btn-info" asp-controller="Encarregados" asp-action="Details" asp-route-id="@item.Id"><spam class="fa fa-search"></spam></a>
+                <a class="btn btn-warning" asp-controller="Encarregados" asp-action="Edit" asp-route-id="@item.Id"><spam class="fa fa-pencil-alt"></spam></a>
+               @*  <a class="btn btn-danger" asp-controller="Encarregados" asp-action="Delete" asp-route-id="@item.Id"><spam class="fa fa-trash"></spam></a> *@
+             </td>
+         </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<br />
+<br />
+
+

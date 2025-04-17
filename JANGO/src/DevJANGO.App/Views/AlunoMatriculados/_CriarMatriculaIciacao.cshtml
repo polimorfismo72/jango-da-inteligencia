@@ -1,0 +1,39 @@
+﻿@model DevJANGO.App.ViewModels.AlunoMatriculadoViewModel
+
+  <input type="hidden" asp-for="NiveisDeEnsinoId" class="form-control" />
+  <input type="hidden" asp-for="ClasseId" class="form-control" />
+  <input type="hidden" asp-for="CursoId" class="form-control" />
+  <input type="hidden" asp-for="FuncionarioCaixaId" class="form-control" />
+  <input type="hidden" asp-for="CodigoAluno" class="form-control" />
+  <input type="hidden" asp-for="Nome" class="form-control" />
+  <input type="hidden" asp-for="Sexo" class="form-control" />
+  <input type="hidden" asp-for="AnoLetivo" class="form-control" />
+
+<div class="row">
+    
+    <div class="form-group col-md-3">
+        <label asp-for="TurmaId" class="control-label"></label>
+        <select asp-for="TurmaId" class="form-control" asp-items="@(new SelectList(Model.Turmas, "Id", "NomeTurma"))">
+            <option></option>
+        </select>
+        <span asp-validation-for="TurmaId" class="text-danger"></span>
+    </div>
+    <div class="form-group col-md-1"></div>
+    <div class="form-group col-md-4">
+        <label class="control-label"></label>
+        <input id="txtVaga" readonly="readonly" class="form-control" />
+
+    </div>
+
+</div>
+
+
+@* @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            // SetIdade();
+            SetVaga();
+        });
+    </script>
+} *@

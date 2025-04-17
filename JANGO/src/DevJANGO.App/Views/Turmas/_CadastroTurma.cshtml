@@ -1,0 +1,38 @@
+﻿@model DevJANGO.App.ViewModels.TurmaViewModel
+
+           
+<div class="row">
+                <input type="hidden" value="45" asp-for="NumDeVagas" />
+                <div class="form-group col-md-3">
+                <label asp-for="ClasseId" class="control-label"></label>
+                <select asp-for="ClasseId" class="form-control" asp-items="@(new SelectList(Model.Classes, "Id", "Nome"))">
+                    <option></option>
+                </select>
+                <span asp-validation-for="ClasseId" class="text-danger"></span>
+                </div>
+         
+                <div class="form-group col-md-3">
+                <label asp-for="AreaDeConhecimentoId" class="control-label"></label>
+                <select asp-for="AreaDeConhecimentoId" class="form-control" asp-items="@(new SelectList(Model.AreaDeConhecimentos, "Id", "Nome"))">
+                    <option></option>
+                </select>
+                <span asp-validation-for="AreaDeConhecimentoId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="control-label">Nome da Turma</label>
+                    <input asp-for="NomeTurma" class="form-control" />
+                    <span asp-validation-for="NomeTurma" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group col-md-3">
+                <div class="form-group form-check">
+                        <br />
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Estado" /> @Html.DisplayNameFor(model => model.Estado)
+                    </label>
+                </div>
+                    <br />
+                </div>
+            </div>
+           

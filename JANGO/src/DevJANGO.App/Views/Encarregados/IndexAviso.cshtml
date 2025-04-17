@@ -1,0 +1,76 @@
+﻿@{
+    Layout = "/Areas/Encarregado/Views/Shared/_LayoutEncarregado.cshtml";
+}
+<style>
+    .btn-primary{
+        color: #fff;
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 .25rem #0d6efd;
+    }
+    primary, .btn-primary:focus, .btn-primary:hover {
+            color: #fff;
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 .25rem #0d6efd;
+    }
+
+</style>
+<div class="container mt-3">
+   
+    <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h2>Att!</h2>
+        <h1>Aviso importante</h1>
+        <p class="h3 text-light">
+            Preenche o formulário tendo em conta que
+            o número do Bilhete de identidade, o número da cédula e o número do telefone pertence a uma única pessoa!
+        </p>
+        <p class="h3 text-light">
+            Ao preencher o campo telefone deve apenas escrever os números sem espaços e sem ífen(-) ou barra(/), 
+        </p>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <p class="d-inline-flex gap-1">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    O MEU EDUCANDO ESTÁ INSCRITO O QUE FAÇO?
+                </a>
+
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    Depois de inscrever o seu educando faça a entrega dos documentos presencialmente a secretaria da escola.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <p class="d-inline-flex gap-1">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    ENVIO DE COMPROVATIVO
+                </a>
+
+            </p>
+            <div class="collapse" id="collapseExample1">
+                <div class="card card-body">
+                    Depois de inscrever ou matricular o seu educando faça o envio do comprovativo de pagamento da inscrição ou da matricula ao WhatsApp financeiro da escola.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <p class="d-inline-flex gap-1">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    COMPROVATIVO FALSO
+                </a>
+
+            </p>
+            <div class="collapse" id="collapseExample2">
+                <div class="card card-body">
+                    É expressamente proibido o envio de comprovativo de pagamento falso vindo da parte do encarregado de educação visto que esta acção poderá cloca-lo sobre um processo criminal.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

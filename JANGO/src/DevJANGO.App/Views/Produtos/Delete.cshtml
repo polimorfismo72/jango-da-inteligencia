@@ -1,0 +1,47 @@
+﻿@model DevJANGO.App.ViewModels.ProdutoViewModel
+
+@{
+    ViewData["Title"] = "Tem a certeza de que queres apagar o Produto " + Model.Nome + " - 000" + Model.Codigo + " ? ";
+}
+
+<br />
+<br />
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+
+ 
+<div class="row">
+       
+    <div class="col-md-6">
+        <dl>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+    </dl>
+      
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <div>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+        </form>
+    </div>
+</div>
+</div>
+ <br />
+
+

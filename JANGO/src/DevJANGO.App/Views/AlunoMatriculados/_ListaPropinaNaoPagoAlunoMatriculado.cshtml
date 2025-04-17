@@ -1,0 +1,56 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.PropinaViewModel>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayName("Descrição da Propina")
+            </th>
+            <th>
+                @Html.DisplayName("Valor")
+            </th>
+            <th>
+                @Html.DisplayName("Ano Lectivo")
+            </th>
+            <th>
+                @Html.DisplayName("Situação")
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any(a => a.Situacao == 5))
+        {
+            <partial name="_Bolseiro" />
+        }
+        else
+        {
+        @foreach (var item in Model.Where(c => c.Situacao == 4))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescricaoPropina)
+                </td>
+                <td>
+                    @this.FormatoMoeda(item.PrecoPropina) 
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnoLetivo)
+                </td>
+                <td>
+                    @if (item.Situacao == 1)
+                    {
+                        <span style="color: #0d6efd;">Pago</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger">Pendente</span>
+                    }
+                </td>
+            </tr>
+        }
+        }
+    </tbody>
+</table>

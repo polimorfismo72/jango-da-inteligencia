@@ -1,0 +1,45 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.PagamentoPropinaViewModel>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+         <tr>
+            <th>
+                @Html.DisplayName("Aluno")
+            </th>
+            <th>
+                @Html.DisplayName("Descrição")
+            </th>
+           @*  <th>
+                @Html.DisplayName("Preço")
+            </th> *@
+            <th>
+                @Html.DisplayName("Total Pago")
+            </th>
+
+            <th></th>
+        </tr> 
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(c => c.Ativo == true && c.PagamentoMaticula == false))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlunoMatriculado.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+               @*  <td>
+                    @this.FormatoMoeda(item.PrecoPropina)
+                </td> *@
+                <td>
+                    @this.FormatoMoeda(item.TotalPago)
+                </td>
+                <td class="text-end">
+                    <a class="btn btn-warning" asp-controller="PagamentoPropinas" asp-action="EfetuarPagamento" asp-route-id="@item.Id"><spam class="fas fa-donate"></spam></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

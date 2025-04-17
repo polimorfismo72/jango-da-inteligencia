@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Funcionário";
+}
+
+<div class="container">
+    <h1>Área do @ViewData["Title"]</h1>
+    <br />
+    <h3>Cadastros</h3>
+    <div>
+        <hr />
+
+        <a asp-area="" asp-controller="Classes" asp-action="Index"
+           class="btn btn-primary mb-3" style="width:auto">
+            Classes Lecionadas
+        </a>
+        <a asp-area="" asp-controller="ProfessorDisciplinaClasses" asp-action="Index"
+           class="btn btn-primary mb-3" style="width:auto">
+            Disciplinas do professor
+        </a>
+        <a asp-area="" asp-controller="Encarregados" asp-action="Index"
+           class="btn btn-primary mb-3" style="width:auto">
+            Encarregado de Educação
+        </a>
+        <a asp-area="" asp-controller="GrauDeParentescos" asp-action="Index"
+           class="btn btn-primary mb-3" style="width:auto">
+            Grau de Parentesco
+        </a>
+        <a asp-area="" asp-controller="AlunoInscritos" asp-action="IndexIniciacao"
+           class="btn btn-primary mb-3" style="width:auto">
+            Inscrição de Aluno
+        </a>
+        <a asp-area="" asp-controller="Professores" asp-action="Index"
+           class="btn btn-primary mb-3" style="width:auto">
+            Professor
+        </a>
+        <a asp-area="" asp-controller="Disciplinas" asp-action="Index"
+           class="btn btn-primary mb-3" style="width:auto">
+            Disciplina
+        </a>
+        <a asp-area="" asp-controller="Produtos" asp-action="Index"
+           class="btn btn-primary mb-3" style="width:auto">
+            Produto
+        </a>
+        <a asp-area="" asp-controller="Turmas" asp-action="Index"
+           class="btn btn-primary mb-3" style="width:auto">
+            Turma
+        </a>
+
+        <br />
+    </div>
+
+    <h3>Matriculas</h3>
+ <div>
+        <hr />
+        <a asp-area="" asp-controller="AlunoMatriculados" asp-action="Create"
+           class="btn btn-primary mb-3" style="width:auto">
+            Nova Matricula
+        </a>
+        <a asp-area="" asp-controller="ProfessorDisciplinaClasses" asp-action="Index"
+           class="btn btn-primary mb-3" style="width:auto">
+            Reconfirmação de Matricula
+        </a>
+        <a asp-area="" asp-controller="AlunoMatriculados" asp-action="IndexMatriculaPendenteIniciacao"
+           class="btn btn-primary mb-3" style="width:auto">
+            Matricula Pendente
+        </a>
+        <a asp-area="" asp-controller="AlunoMatriculados" asp-action="IndexMatriculaEfetuada"
+           class="btn btn-primary mb-3" style="width:auto">
+            Matricula Finalizada
+        </a>
+        <a asp-area="" asp-controller="AlunoMatriculados" asp-action="IndexMatriculaTurma"
+           class="btn btn-primary mb-3" style="width:auto">
+            Alunos em Turmas
+        </a>
+
+        <br />
+ </div>
+    <h3>Pagamentos</h3>
+    <div>
+        <hr />
+        <a asp-area="" asp-controller="PagamentoPropinas" asp-action="Create"
+           class="btn btn-primary mb-3" style="width:auto">
+            Novo Pagamento de Propina
+        </a>
+        <a asp-area="" asp-controller="" asp-action=""
+           class="btn btn-primary mb-3" style="width:auto">
+            Novo Pagamento de Multa
+        </a>
+
+        <a asp-area="" asp-controller="Pedidos" asp-action="Create"
+           class="btn btn-primary mb-3" style="width:auto">
+            Novo Pagamento diverso
+        </a>
+    </div>
+    <div>
+        <a asp-area="" asp-controller="PagamentoPropinas" asp-action="IndexFinalizado"
+           class="btn btn-primary mb-3" style="width:auto">
+            Lista de Propina Finalizada
+        </a>
+        <a asp-area="" asp-controller="PagamentoPropinas" asp-action="Index"
+           class="btn btn-primary mb-3" style="width:auto">
+            Lista de Propina Pendente
+        </a>
+        <a asp-area="" asp-controller="Pedidos" asp-action="Index"
+           class="btn btn-primary mb-3" style="width:auto">
+            Lista de Pagamento diverso
+        </a>
+    </div>
+   
+    <div>
+        <a asp-area="" asp-controller="" asp-action=""
+           class="btn btn-primary mb-3" style="width:auto">
+            Lista de Multa de Finalizada
+        </a>
+        <a asp-area="" asp-controller="" asp-action=""
+           class="btn btn-primary mb-3" style="width:auto">
+            Lista de Multa de Pendente
+        </a>
+    </div>
+</div>

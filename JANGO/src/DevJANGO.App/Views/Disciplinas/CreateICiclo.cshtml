@@ -1,0 +1,29 @@
+﻿@model DevJANGO.App.ViewModels.DisciplinaViewModel
+
+@{
+    ViewData["Title"] = "Discilina";
+    Layout = "_CriarDisciplinaLayout";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"] do I Ciclo</h1>
+   <hr />
+    <div class="row">
+        <form enctype="multipart/form-data" asp-action="CreateICiclo">
+            <vc:Summary></vc:Summary>
+            <partial name="_CriarDisciplina" />
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+            </div>
+        </form>
+    </div>
+        
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

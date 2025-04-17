@@ -1,0 +1,71 @@
+﻿@model DevJANGO.App.ViewModels.AvaliacaoViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>AvaliacaoViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nota" class="control-label"></label>
+                <input asp-for="Nota" class="form-control" />
+                <span asp-validation-for="Nota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnoLetivo" class="control-label"></label>
+                <input asp-for="AnoLetivo" class="form-control" />
+                <span asp-validation-for="AnoLetivo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCadastro" class="control-label"></label>
+                <input asp-for="DataCadastro" class="form-control" />
+                <span asp-validation-for="DataCadastro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlunoMatriculadoId" class="control-label"></label>
+                <select asp-for="AlunoMatriculadoId" class ="form-control" asp-items="ViewBag.AlunoMatriculadoId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoAvaliacaoId" class="control-label"></label>
+                <select asp-for="TipoAvaliacaoId" class ="form-control" asp-items="ViewBag.TipoAvaliacaoId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrimestreId" class="control-label"></label>
+                <select asp-for="TrimestreId" class ="form-control" asp-items="ViewBag.TrimestreId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClasseId" class="control-label"></label>
+                <select asp-for="ClasseId" class ="form-control" asp-items="ViewBag.ClasseId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TurmaId" class="control-label"></label>
+                <select asp-for="TurmaId" class ="form-control" asp-items="ViewBag.TurmaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DisciplinaId" class="control-label"></label>
+                <select asp-for="DisciplinaId" class ="form-control" asp-items="ViewBag.DisciplinaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfessorId" class="control-label"></label>
+                <select asp-for="ProfessorId" class ="form-control" asp-items="ViewBag.ProfessorId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

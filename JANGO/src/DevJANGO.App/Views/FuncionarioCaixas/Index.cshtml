@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DevJANGO.App.ViewModels.FuncionarioCaixaViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Funcionários";
+    Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<div class="container">
+    <h1>@ViewData["Title"] do Caixa</h1>
+
+    <vc:Summary></vc:Summary>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayName("Estado")
+                </th>
+                <th>
+                    @Html.DisplayName("Alterar o Estado")
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                 
+                    <td>
+                        @if (item.Ativo == true)
+                        {
+                            <span style="color: green;">Ativo</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger">Desativado</span>
+                        }
+                    </td>
+                    <td>
+                    
+                        <a asp-controller="FuncionarioCaixas" asp-action="Edit" asp-route-id="@item.Id">
+                            @{
+                                if (item.Ativo == true)
+                                {
+                                
+                                <p class="text-danger">Desativar</p>
+                              
+                                }
+                                else
+                                {
+                                    <p class="text-primary">Ativar</p>
+                                }
+                            }
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<br />
+
+
+ 

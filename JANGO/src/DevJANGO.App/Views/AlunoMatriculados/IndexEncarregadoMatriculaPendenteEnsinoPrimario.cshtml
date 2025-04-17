@@ -1,0 +1,35 @@
+﻿@model PagedViewModel<AlunoMatriculadoViewModel>
+@{
+    ViewData["Title"] = "Lista de Matriculas";
+    Layout = "_ListaMatriculadosPeloEncarregado";
+}
+
+<div class="container">
+  <h1>@ViewData["Title"] do Ensino Primário</h1>
+    <div class="row align-items-center" style="margin: 6px;">
+      <div class="row">
+          <div class="col-lg-2 col-sm-2">
+              <a class="btn btn-info" asp-action="CreateEncarregadoEnsinoPrimario">Nova Matricula</a>
+          </div>
+          <div class="col-lg-2 col-sm-2">
+              <p style="margin: 7px;">
+                  @Model.List.Count() alunos
+              </p>
+
+          </div>
+          <div class="col-lg-8 col-sm-8">
+              <form method="get" asp-controller="AlunoMatriculados" asp-action="IndexEncarregadoMatriculaPendenteEnsinoPrimario" class="search">
+                  <div class="input-group w-100">
+                      <input type="text" id="q" name="q" class="form-control" value="@ViewBag.Pesquisa" placeholder="Procure pelo nome, pelo número do documento ou pelo código do aluno!">
+                      <div class="input-group-append">
+                          <button class="btn btn-primary" type="submit">
+                              <i class="fa fa-search"></i>
+                          </button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+    <partial name="_ListaMatriculaPendentePeloEncarregado" />
+</div>

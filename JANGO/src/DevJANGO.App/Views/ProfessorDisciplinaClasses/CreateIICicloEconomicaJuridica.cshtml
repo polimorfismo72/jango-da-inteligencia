@@ -1,0 +1,28 @@
+﻿@model DevJANGO.App.ViewModels.ProfessorDisciplinaClasseViewModel
+
+@{
+    ViewData["Title"] = "Atribuir Discilina ao Professor de Economicas Jurídica";
+    Layout = "_ProfessorLayout";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+    <div class="row">
+        <form enctype="multipart/form-data" asp-action="CreateIICicloEconomicaJuridica">
+            <vc:Summary></vc:Summary>
+            <partial name="_Criar" />
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <a class="btn btn-warning" asp-controller="Professores" asp-action="Index">Localizar Professores</a>
+                <a class="btn btn-info" asp-controller="ProfessorDisciplinaClasses" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

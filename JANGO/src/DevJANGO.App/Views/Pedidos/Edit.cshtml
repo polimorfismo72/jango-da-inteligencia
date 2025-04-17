@@ -1,0 +1,151 @@
+﻿@model DevJANGO.App.ViewModels.PedidoViewModel
+
+@{
+    ViewData["Title"] = "Pedido";
+}
+@* <br /> *@
+@* <br /> *@
+<div class="container">
+ @*    <h1>@ViewData["Title"]  do(a) aluno(a) - @ViewBag.Nome</h1> *@
+@* <hr /> *@
+    <h4>Produto</h4>
+    <div>
+        <partial name="_CriarBuscaParaProduto" />
+    </div>
+@*     <hr /> *@
+<form asp-action="Edit">
+
+@*     <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+        <vc:Summary></vc:Summary>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="AlunoMatriculadoId" />
+
+       <br />
+        <div>
+            <div class="row gx-2">
+                <div class="col-4">
+                    <input asp-for="Produto.Nome" value="@TempData["Nome"]" readonly="readonly" class="form-control" />
+                </div>
+
+                <div class="col-2">
+                    <input asp-for="Produto.QuantidadeEstoque" value="@TempData["Stoque"]" readonly="readonly" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <h1>@ViewData["Title"]  do(a) aluno(a) - @ViewBag.Nome</h1>
+    <div class="row">
+        <div class="form-group col-md-3">
+
+            <label asp-for="ValorDesconto" class="control-label"></label>
+            <input asp-for="ValorDesconto" class="form-control" />
+            <span asp-validation-for="ValorDesconto" class="text-danger"></span>
+
+            <label asp-for="ValorTotal" class="control-label"></label>
+            <input asp-for="ValorTotal" class="form-control" readonly="readonly" />
+          
+        </div>
+        
+        <div class="form-group col-md-3">
+
+            <label asp-for="OperacaoPedidos"></label>
+            <div>
+                <input type="radio" value="1" asp-for="OperacaoPedidos" checked="@(Model.OperacaoPedidos == 1)" /> Venda<br />
+                <input type="radio" value="2" asp-for="OperacaoPedidos" checked="@(Model.OperacaoPedidos == 2)" /> Devolução Da Venda<br />
+                <input type="radio" value="3" asp-for="OperacaoPedidos" checked="@(Model.OperacaoPedidos == 3)" /> Cancelado<br /><br />
+            </div>
+
+        </div>
+
+        <div class="form-group col-md-3">
+
+            <label asp-for="Situacao"></label>
+            <div>
+                <input type="radio" value="1" asp-for="Situacao" checked="@(Model.Situacao == 1)" /> Aberto<br />
+                <input type="radio" value="2" asp-for="Situacao" checked="@(Model.Situacao == 2)" /> Finalizado<br /><br />
+            </div>
+
+        </div>
+
+        <div class="form-group col-md-3">
+           
+            <label asp-for="TipoPagamento"></label>
+            <div>
+                <input type="radio" value="1" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 1)" /> Transferência<br />
+                <input type="radio" value="2" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 2)" /> Depósito<br />
+                <input type="radio" value="3" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 3)" /> Cash<br />
+                <input type="radio" value="4" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 4)" /> Tpa<br />
+            </div>
+
+            <input type="hidden" asp-for="Ativo" />
+              
+          @*   <input asp-for="NumeroDeTransacaoDePagamento" type="hidden" class="form-control" /> *@
+
+        </div>
+
+                 @* PRODUTO A SER EDITADO *@
+   @*       <input type="hidden" asp-for="Produto.Id" /> 
+        <input type="hidden" asp-for="Produto.Nome" class="form-control" />
+        <input type="hidden" asp-for="Produto.Descricao" class="form-control" /> 
+        <input type="hidden" asp-for="Produto.ValorVenda" class="form-control" />
+        <input type="hidden" asp-for="Produto.QuantidadeEstoque" class="form-control" /> 
+        <input type="hidden" asp-for="Produto.Ativo" class="form-control" /> *@
+        <input asp-for="Produto.Id" value="@TempData["Id"]" type="hidden" />
+        <input asp-for="Produto.QuantidadeEstoque" value="@TempData["Stoque"]" type="hidden" />
+         @*    <input asp-for="Produto.Id" value="@TempData["Id"]" type="hidden" />
+            <input asp-for="Produto.Id" value="@TempData["Id"]" type="hidden" /> *@
+            @* <input asp-for="AlunoInscrito.Id" value="@TempData["Id"]" type="hidden" /> *@
+    </div>
+
+    <h4>Items do Pedido</h4>
+        <hr />
+        <div>
+            <partial name="_PedidoItems" />
+        </div>
+
+     
+    <br />
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+
+        <a class="btn btn-danger" type="submit" asp-controller="Pedidos" asp-action="Index">
+               <i>Cancelar Pedido</i>
+        </a>
+
+        <a class="btn btn-info" type="submit" asp-controller="Pedidos" asp-action="Index">
+            <i>Voltar</i>
+        </a>
+    </div>
+    <br />
+
+    <h4>Carrinho de Compras do aluno</h4>
+    <hr />
+
+    <partial name="_ListaPedidoItems" model="@Model.PedidoItems" />
+   
+    <div class="text-end">
+        <a class="btn btn-primary" type="submit" asp-controller="Pedidos" asp-action="FinalizarVenda" asp-route-id="@Model.Id">
+            <i>Finalizar a Venda</i>
+        </a>
+        @* <a class="btn btn-warning" type="submit" asp-controller="Pedidos" asp-action="FinalizarVenda" asp-route-id="@Model.Id"> *@
+        <a class="btn btn-warning" type="submit" asp-controller="Pedidos" asp-action="ImprimirPagamento" asp-route-id="@Model.Id">
+            <i>Imprimir Fatura</i>
+        </a> 
+    @*     <a class="btn btn-warning">
+            <i>Imprimir Fatura</i>
+        </a> *@
+    </div>
+   
+</form>
+</div>
+<br />
+<br />
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            SetPreco();
+        });
+    </script>
+} 
+

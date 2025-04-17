@@ -1,0 +1,265 @@
+﻿@model IEnumerable<DevJANGO.Business.Models.AlunoInscrito>
+@* @using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.AlunoInscritoViewModel> *@
+@{
+    ViewData["Title"] = "Jango-Início";
+}
+
+
+<!-- Carousel Start -->
+
+<div class="container-fluid p-0 mb-5">
+    <div class="owl-carousel header-carousel position-relative">
+        <div class="owl-carousel-item position-relative">
+
+            <img class="img-fluid" src="~/img/alunos1.jpg" alt="" asp-append-version="true">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-10 col-lg-8">
+                            <h1 class="display-2 text-white animated slideInDown mb-4">Jango Da Inteligência Em Desenvolvimento</h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">
+                                Escola viva é aquela que promove uma cultura de liberdade e a atenta a diversidade de todos os membros da comunidade educativa, contribuindo para a autonomização do indivíduo.
+                            </p>
+                            <a href="" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Em Desenvolvimento</a>
+                            <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Em Desenvolvimento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="owl-carousel-item position-relative">
+
+            <img class="img-fluid" src="~/img/alunos2.jpg" alt="" asp-append-version="true">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-10 col-lg-8">
+                            <h1 class="display-2 text-white animated slideInDown mb-4">Jango Da Inteligência Em Desenvolvimento</h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">
+                                A escolha de uma escola, não só determina o futuro do seu filho como profissional, mas também o seu futuro como indivíduo na sociedade. As escolhas são necessárias.
+                            </p>
+                            <a href="" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Em Desenvolvimento</a>
+                            <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Em Desenvolvimento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="owl-carousel-item position-relative">
+
+            <img class="img-fluid" src="~/img/alunos3.jpg" alt="" asp-append-version="true">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-10 col-lg-8">
+                            <h1 class="display-2 text-white animated slideInDown mb-4">Jango Da Inteligência Em Desenvolvimento</h1>
+                            <p class="fs-5 fw-medium text-white mb-4 pb-2">
+                                Formar e educar cada indivíduo segundo os seus aspectos culturais, sociais e cognitivos é o processo que o Jango da Inteligência oferece a cada um dos seus alunos.
+                            </p>
+                            <a href="" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Em Desenvolvimento</a>
+                            <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Em Desenvolvimento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Carousel End -->
+
+<!-- Classes Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Níveis de Ensino</h1>
+            <p>A escola Jango da Inteligência está organizado com as seguintes etapas de ensino:</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="~/img/classe1.jpg" alt="" asp-append-version="true">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <a class="d-block text-center h3 mt-3 mb-4" href="">Ensino Primário</a>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex align-items-center">
+                                <div class="ms-3">
+                                    <h6 class="text-primary mb-1">Da Iniciação à 6ª Classe</h6>
+                                    <small>Com Professores Capacitados</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-1">
+                            <div class="col-4">
+                                <div class="border-top border-3 border-primary pt-2">
+                                    <h6 class="text-primary mb-1">Idade:</h6>
+                                    <small>5 à 11 Anos Idade</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="border-top border-3 border-success pt-2">
+                                    <h6 class="text-success mb-1">Período:</h6>
+                                    <small>Manhã e Tarde</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="border-top border-3 border-warning pt-2">
+                                    <h6 class="text-warning mb-1">Nº de Alunos:</h6>
+                                    <small>
+                                        + de @Convert.ToInt32((Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Iniciação").Count() + Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Primário").Count()) - 1)
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="~/img/classe2.jpg" alt="" asp-append-version="true">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <a class="d-block text-center h3 mt-3 mb-4" href="">Primeiro Ciclo</a>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex align-items-center">
+                                <div class="ms-3">
+                                    <h6 class="text-primary mb-1">Da 7ª à 9ª Classe</h6>
+                                    <small>Com Professores Capacitados</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-1">
+                            <div class="col-4">
+                                <div class="border-top border-3 border-primary pt-2">
+                                    <h6 class="text-primary mb-1">Idade:</h6>
+                                    <small>12 à 14 Anos de Idade</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="border-top border-3 border-success pt-2">
+                                    <h6 class="text-success mb-1">Período:</h6>
+                                    <small>Tarde</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="border-top border-3 border-warning pt-2">
+                                    <h6 class="text-warning mb-1">Nº de Alunos:</h6>
+                                    <small>
+                                        + de @Convert.ToInt32((Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "I Ciclo").Count()) - 1)
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="classes-item">
+                    <div class="bg-light rounded-circle w-75 mx-auto p-3">
+                        <img class="img-fluid rounded-circle" src="~/img/classe3.jpg" alt="" asp-append-version="true">
+                    </div>
+                    <div class="bg-light rounded p-4 pt-5 mt-n5">
+                        <a class="d-block text-center h3 mt-3 mb-4" href="">Segundo Ciclo</a>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex align-items-center">
+                                <div class="ms-3">
+                                    <h6 class="text-primary mb-1">Da 10ª à 13ª Classe</h6>
+                                    <small>Com Professores Capacitados</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-1">
+                            <div class="col-4">
+                                <div class="border-top border-3 border-primary pt-2">
+                                    <h6 class="text-primary mb-1">Idade:</h6>
+                                    <small>12 à 16 Anos de Idade</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="border-top border-3 border-success pt-2">
+                                    <h6 class="text-success mb-1">Período:</h6>
+                                    <small>Tarde</small>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="border-top border-3 border-warning pt-2">
+                                    <h6 class="text-warning mb-1">Nº de Alunos:</h6>
+                                    <small>
+                                        + de @Convert.ToInt32((Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "II Ciclo").Count()) - 1)
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Classes End -->
+<!-- Team Manage -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Direção</h1>
+            <p>
+                A direção da escola Jango da Inteligência
+            </p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="team-item position-relative">
+                    <img class="img-fluid rounded-circle w-75" src="~/img/diretor.jpg" alt="" asp-append-version="true">
+                    <div class="team-text">
+                        <h3 class="text-center">Ernesto Chambingo</h3>
+                        <p>Director Geral</p>
+                        <div class="d-flex align-items-center">
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-primary  mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-primary  mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="team-item position-relative">
+                    <img class="img-fluid rounded-circle w-75" src="~/img/dp-ensino-primario.jpg" alt="" asp-append-version="true">
+                    <div class="team-text">
+                        <h3 class="text-center">Rosalina</h3>
+                        <p>Sub-DP Ensino Primário</p>
+                        <div class="d-flex align-items-center">
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-primary  mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-primary  mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item position-relative">
+                    <img class="img-fluid rounded-circle w-75" src="~/img/dp-ensino-secundario.jpg" alt="" asp-append-version="true">
+                    <div class="team-text">
+                        <h3 class="text-center">Juliana Caluaco Ventura</h3>
+                        <p>Sub-DP I e II Ciclo</p>
+                        <div class="d-flex align-items-center">
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-primary  mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-primary  mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Team End -->

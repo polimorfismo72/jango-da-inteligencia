@@ -1,0 +1,7 @@
+﻿@* @using DevJANGO.App.ViewModels
+@model PagedViewModel<AlunoMatriculadoViewModel> *@
+@using DevJANGO.App.Extensions
+@model DevJANGO.App.ViewModels.AlunoMatriculadoViewModel
+
+@* Total Alunos : @Model.(p => p.Classe.Nome == "Pré").Count()
+Total Alunos : @Model.Where(p => p.Classe.Nome == "1ª").Count() *@

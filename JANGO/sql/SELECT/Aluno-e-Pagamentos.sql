@@ -1,0 +1,37 @@
+SELECT TOP (1000) [Id]
+      ,[AlunoMatriculadoId]
+      ,[DataCadastro]
+      ,[DescricaoPropina]
+      ,[PrecoPropina]
+      ,[AnoLetivo]
+      ,[Situacao]
+      ,[PagamentoPropinaId]
+  FROM [JANGOBD_Nova].[dbo].[Propinas]
+
+SELECT TOP (1000)  
+[AlunoMatriculadoId]
+      ,[ValorDesconto]
+      ,[TotalPago]
+      ,[TipoPagamento]
+      ,[Ativo]
+      ,[Descricao]
+      ,[NumeroDeMeses]
+      ,[PrecoPropina]
+      ,[PagamentoMaticula]
+  FROM [JANGOBD_Nova].[dbo].[PagamentoPropinas]
+
+SELECT TOP (1000)  
+      [AlunoInscritoId]
+	  ,[CodigoAluno]
+      ,[NumDocumento]
+      ,[Nome]
+      ,[Imagem]
+      ,[Sexo]
+      ,[Idade]
+      ,[Estado]
+      ,[AnoLetivo]
+      ,[DataCadastro]
+      ,[ValorDaMatricula]
+  FROM [JANGOBD_Nova].[dbo].[AlunoMatriculados]
+
+  

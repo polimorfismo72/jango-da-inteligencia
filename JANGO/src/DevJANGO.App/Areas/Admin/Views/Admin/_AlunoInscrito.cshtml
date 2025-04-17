@@ -1,0 +1,4 @@
+﻿@using DevJANGO.App.ViewModels
+@model PagedViewModel<AlunoInscritoViewModel>
+
+  Total Alunos : @Model.List.Where(p => p.NomeClasse == "Pré").Count()

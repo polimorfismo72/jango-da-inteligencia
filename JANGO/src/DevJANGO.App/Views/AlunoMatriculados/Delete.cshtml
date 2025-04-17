@@ -1,0 +1,23 @@
+﻿@model DevJANGO.App.ViewModels.AlunoMatriculadoViewModel
+
+@{
+    ViewData["Title"] = "Eliminar Matricula";
+}
+<br />
+<div class="container">
+    <vc:Summary></vc:Summary>
+    <h1 class="text-danger">Tem a certeza de que pretende apagar?</h1>
+    <hr />
+    <dl class="row">
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+    </dl>
+    <div style="padding-top: 5px">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+        </form>
+    </div>
+</div>

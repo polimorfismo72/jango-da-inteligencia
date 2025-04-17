@@ -1,0 +1,57 @@
+﻿@model DevJANGO.App.ViewModels.ProfessorDisciplinaClasseViewModel
+
+@{
+    ViewData["Title"] = "Professor";
+}
+<br />
+<br />
+<div class="container">
+    <h1>@ViewData["Title"] @ViewBag.Nome</h1>
+    <hr />
+  
+   
+        <form asp-action="Edit">
+        <vc:Summary></vc:Summary>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="ProfessorId" />
+                <div class="row">
+         
+
+                    <div class="form-group col-md-4">
+                        <label asp-for="DisciplinaId" class="control-label"></label>
+                        <select asp-for="DisciplinaId" class="form-control" asp-items="@(new SelectList(Model.Disciplinas, "Id", "NomeDisciplina"))">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="DisciplinaId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="ClasseId" class="control-label"></label>
+                        <select asp-for="ClasseId" class="form-control" asp-items="@(new SelectList(Model.Classes, "Id", "Nome"))">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="ClasseId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="AnoLetivo" class="control-label"></label>
+                        <input asp-for="AnoLetivo" class="form-control" />
+                        <span asp-validation-for="AnoLetivo" class="text-danger"></span>
+                    </div>
+
+                </div>
+        <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+
+        <br />
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

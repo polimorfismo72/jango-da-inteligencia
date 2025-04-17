@@ -1,0 +1,72 @@
+﻿@model DevJANGO.App.ViewModels.PropinaViewModel
+
+@{
+    ViewData["Title"] = "Matricula do(a) - ";
+}
+
+<div class="container">
+   
+    <div class="row">
+        <form enctype="multipart/form-data" asp-action="Edit">
+            <vc:Summary></vc:Summary>
+        <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="MesId" />
+            <input type="hidden" asp-for="AlunoMatriculadoId" />
+            <input type="hidden" asp-for="ClasseId" />
+            <input type="hidden" asp-for="TurmaId" />
+            
+
+         <hr />
+            <div class="row">
+           
+            <div class="form-group col-md-4">
+                <label asp-for="PrecoPropina" class="control-label"></label>
+                <input asp-for="PrecoPropina" class="form-control" />
+                <span asp-validation-for="PrecoPropina" class="text-danger"></span>
+            </div>
+           
+          
+             <div class="form-group col-md-3">
+                 <label>Número de Meses a Pagar</label>
+                 <div class="input-group input-spinner">
+                     <select id="QuantidadeMes" name="QuantidadeMes" asp-for="QuantidadeMes" class="form-control">
+                         <option value="1">Um mês</option>
+                         <option value="2">Dois meses</option>
+                         <option value="3">Três meses</option>
+                         <option value="4">Quatro meses</option>
+                         <option value="5">Cinco meses</option>
+                         <option value="6">Seis meses</option>
+                         <option value="7">Sete meses</option>
+                         <option value="8">Oito meses</option>
+                         <option value="9">Nove meses</option>
+                         <option value="10">Dez meses</option>
+                         <option value="11">Onze meses</option>
+                         <option value="12">Doze meses</option>
+                     </select>
+                 </div>
+                 <span asp-validation-for="QuantidadeMes" class="text-danger"></span>
+             </div>
+             <div class="form-group col-md-3">
+                 <label asp-for="TipoPagamento"></label>
+                 <div>
+                     <input type="radio" value="1" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 1)" /> Transferencia<br />
+                     <input type="radio" value="2" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 2)" /> Deposito <br />
+                     <input type="radio" value="3" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 3)" /> Cash<br />
+                     <input type="radio" value="4" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 4)" /> TPA<br />
+                     <span asp-validation-for="TipoPagamento" class="text-danger"></span>
+                 </div>
+             </div>
+        </div>
+
+            <div class="form-group">
+                <input type="submit" value="Matricular" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

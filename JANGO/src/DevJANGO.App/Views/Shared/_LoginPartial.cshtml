@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+ 
+     <div class="navbar-nav mx-auto">
+         <a class="nav-link nav-link" asp-area="" asp-controller="FuncionarioCaixas" asp-action="Professor">Funcionário</a>
+     </div>
+       
+        @* <a class="nav-item nav-link" asp-area="" asp-controller="FuncionarioCaixas" asp-action="Professor">Funcuionario</a> *@
+
+     @*    <div class="nav-item dropdown">
+            <a class="nav-item nav-link dropdown-toggle" data-bs-toggle="dropdown">Cadastros</a>
+            <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+                <a asp-controller="GrauDeParentescos" asp-action="Index" class="dropdown-item">Grau de parentesco</a>
+                <a asp-controller="Encarregados" asp-action="Index" class="dropdown-item">Encarregado de Educação</a>
+                <a asp-controller="Turmas" asp-action="Index" class="dropdown-item">Turmas</a>
+                <a asp-controller="Classes" asp-action="Index" class="dropdown-item">Classes Lecionadas</a>
+                <a asp-controller="AlunoInscritos" asp-action="IndexIniciacao" class="dropdown-item">Inscrição de Alunos</a>
+            <a asp-controller="Professores" asp-action="Index" class="dropdown-item">Professores</a>
+            <a asp-controller="ProfessorDisciplinaClasses" asp-action="Index" class="dropdown-item">Disciplinas do Professor</a>
+            </div>
+        </div>
+
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Matricula</a>
+            <div class="dropdown-menu bg-light m-0">
+                <a asp-controller="AlunoMatriculados" asp-action="Create" class="dropdown-item">Nova</a>
+                <a asp-controller="" asp-action="" class="dropdown-item">Reconfirmação</a>
+                <a asp-controller="AlunoMatriculados" asp-action="IndexMatriculaPendenteIniciacao" class="dropdown-item">Pendentes</a>
+                <a asp-controller="AlunoMatriculados" asp-action="IndexMatriculaEfetuada" class="dropdown-item">Efetuadas</a>
+            </div>
+        </div>
+
+        <div class="nav-item nav-link dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pagamentos</a>
+            <div class="dropdown-menu bg-light m-0">
+                <a asp-controller="PagamentoPropinas" asp-action="Create" class="dropdown-item">Novo Pagamento</a>
+                <a asp-controller="PagamentoPropinas" asp-action="Index" class="dropdown-item">Pagamento Pendente</a>
+            <a asp-controller="Pedidos" asp-action="Create" class="dropdown-item">Venda de artigos</a>
+                <a asp-controller="" asp-action="" class="dropdown-item">Multas</a>
+            </div>
+        </div> *@
+
+        <a class="nav-item nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Olá @User.Identity?.Name!</a>
+        
+        <li class="nav-item nav-link">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="btn btn-primary rounded-pill px-3  d-lg-block">Sair</button>
+            </form>
+        </li>
+    }
+
+    else
+    {
+    <a class="btn btn-primary rounded-pill px-3  d-lg-block" asp-area="Identity" asp-page="/Account/Login">
+        Entrar<i class="fa fa-arrow-right ms-3"></i></a>
+    }

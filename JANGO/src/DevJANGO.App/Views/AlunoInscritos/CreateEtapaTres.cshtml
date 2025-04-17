@@ -1,0 +1,47 @@
+﻿@model DevJANGO.App.ViewModels.AlunoInscritoViewModel
+
+
+@{
+    ViewData["Title"] = "Inscrição";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"]  Para Etapa III</h1>
+    <hr />
+    <div class="row">
+
+        <form enctype="multipart/form-data" asp-action="CreateEtapaTres">
+            <vc:Summary></vc:Summary>
+            <input type="hidden" asp-for="EscolaDeOrgigem" class="form-control" />
+       
+            <input type="hidden" asp-for="ClasseId" class="form-control" />
+
+
+            <partial name="_CriarParaIniciacao" />
+
+            <div class="form-group">
+                <input type="submit" value="Adicionar" class="btn btn-success" />
+                <a class="btn btn-info" asp-action="IndexEtapaTres">Voltar</a>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $("#ImagemUpload").change(function () {
+            $("#img_nome").text(this.files[0].name);
+            $("#img_nome")[0].style.display = 'block';
+        });
+
+        $("#ImagemUpload").attr("data-val", "true");
+        $("#ImagemUpload").attr("data-val-required", "Preencha o campo Foto");
+    </script>
+}

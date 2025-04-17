@@ -1,0 +1,104 @@
+﻿@using DevJANGO.App.Extensions
+@model PagedViewModel<ProfessorDisciplinaClasseViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Professor";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"] e suas disciplinas</h1>
+    <vc:Summary></vc:Summary>
+
+ 
+    <div class="row align-items-center" style="margin: 6px;">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6">
+                <a class="btn btn-info" asp-action="Create">Adicionar Disciplina ao Professor</a>
+                <a class="btn btn-warning" asp-controller="Professores" asp-action="Index">Localizar Professores</a>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <p style="margin: 7px;">
+                    @Model.List.Count() linhas
+                </p>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <form method="get" asp-controller="ProfessorDisciplinaClasses" asp-action="Index" class="search">
+                    <div class="input-group w-100">
+                        <input type="text" id="q" name="q" class="form-control" value="@ViewBag.Pesquisa" placeholder="Procure pelo nome!">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <table class="table table-responsive-sm table-hover">
+        <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayName("Professor")
+            </th>
+            <th>
+                @Html.DisplayName("Uma das Classes  que Leciona")
+            </th>
+            <th>
+                @Html.DisplayName("Número de Disciplinas Por Classe")
+            </th> 
+        
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+     @if (Model.List.Count() != 0)
+            {
+                @foreach (var item in Model.List)
+                {
+                  <tr>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.Nome)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.NomeClasse)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.DisciplinasAssociadas)
+                     </td>
+                     <td class="text-end">
+                         <a class="btn btn-warning" asp-controller="Professores" asp-action="Details" asp-route-id="@item.ProfessorId"><spam class="fa fa-pencil"></spam></a>
+                     </td>
+                  </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+
+                    <td>
+                        <span class="text-danger" style="font-size:18px;">Pesquisa não encontrada!</span>
+                    </td>
+
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <vc:paginacao modelo-paginado="@Model"></vc:paginacao>
+
+</div>
+<br />
+

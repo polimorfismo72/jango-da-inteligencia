@@ -1,0 +1,72 @@
+﻿@model DevJANGO.App.ViewModels.PedidoViewModel;
+@{
+    ViewData["Title"] = "Venda de artigos";
+}
+<br />
+ 
+<div class="container">
+    <h1 style="padding-top: 50px">Escreve o documento do aluno</h1>
+  <hr />
+    <partial name="_CriarAluno" />
+
+  <div class="row">
+  
+        <form asp-action="Create">
+            <vc:Summary></vc:Summary>
+            <input type="hidden" asp-for="ValorDesconto" value="0" class="form-control" />
+            <input type="hidden" asp-for="ValorTotal" class="form-control" value="0" />
+            <input type="hidden" value="1" asp-for="OperacaoPedidos" checked />
+            <input type="hidden" value="1" asp-for="Situacao" checked />
+            <input type="hidden" value="1" asp-for="TipoPagamento" />
+          @*   <input type="hidden" asp-for="NumeroDeTransacaoDePagamento" class="form-control" value="1233456" /> *@
+            <input type="hidden" asp-for="Ativo" />
+
+
+            <input asp-for="AlunoMatriculado.Id" value="@TempData["Id"]" type="hidden" />
+            <input asp-for="AlunoMatriculado.Nome" value="@TempData["Nome"]" type="hidden" />
+          
+                <br />
+                <div class="row gx-2">
+                    <div class="col-4">
+                        <input asp-for="AlunoMatriculado.Nome" value="@TempData["Nome"]" readonly="readonly" class="form-control" />
+                    </div>
+
+                    <div class="col-4">
+                        <input value="@TempData["Classe"]" readonly="readonly" class="form-control" />
+                    </div>
+                </div>
+             
+            <br />
+         
+            <div class="form-group" style="padding-top: 25px">
+                <input type="submit" value="Ir Para O Carrinho" class="btn btn-primary" />
+            </div>
+        </form>
+   
+  </div>
+  
+
+</div>
+<br />
+<br />
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@*     <script>
+        $(document).ready(function () {
+            SetNif();
+        });
+    </script> *@
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

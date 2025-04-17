@@ -1,0 +1,87 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.AlunoMatriculadoViewModel>
+@{
+    ViewData["Title"] = " Lista nominal";
+    Layout = "_LayoutImprimir";
+    var N = Model.Count();
+    IEnumerable<int> squares = Enumerable.Range(N, 1).ToList();
+    // int Numero = @Convert.ToInt32(N);
+    int v = @Convert.ToInt32(squares.Count());
+}
+
+<style>
+    .title {
+        font-weight: bold;
+        font-size: 30px;
+        color: #000;
+    }
+    .titlep {
+        font-size: 20px;
+        color: #000;
+    }
+</style>
+
+<div class="container">
+    <div style="text-align: center;">
+        <img src="~/imagens/logo/logo-Jango.png" style="width: 60px; height:60px;" />
+        <p class="title" style="margin: 3px;">JANGO DA INTELIGÊNCIA</p>
+        <h2>@ViewData["Title"] da turma @Model.Select(a => a.Turma.NomeTurma).FirstOrDefault() - @Model.Select(a => a.Classe.Nome).FirstOrDefault() Classe, com @Model.Count() aluno(s)</h2>
+    </div>
+ 
+    <table class="table table-responsive-sm table-hover" style="font-size: 20px;">
+        <thead style="background-color:#000;color:#fff">
+            <tr>
+                <th>Nº</th>
+                <th>Cod</th>
+                <th>Nome do Aluno(a)</th>
+                <th>Data de Nascimento</th>
+                <th>Idade</th>
+                <th>Género</th>
+               @*  <th>Turma</th> *@
+            </tr>
+        </thead>
+        <tbody>
+          
+            @if (Model.Count() != 0)
+            {
+                @foreach (var aluno in Model)
+                {
+                    <tr>
+                        <td>
+                            @(v++)
+                        </td>
+                        <td>
+                          @aluno.CodigoAluno
+                        </td>
+                        <td>
+                            @aluno.Nome
+                        </td>
+                        <td>
+                            @this.FormataData(aluno.AlunoInscrito.Datanascimento)
+                        </td>
+                        <td>
+                            @aluno.Idade
+                        </td>
+                        <td>
+                            @if (aluno.Sexo == true)
+                            {
+                                <span>Masculino</span>
+                            }
+                            else
+                            {
+                                <span>Femenino</span>
+                            }
+                        </td>
+                    @*     <td>
+                            @aluno.Turma.NomeTurma
+                        </td> *@
+                    </tr>
+                }
+            }
+            else
+            {
+                <partial name="_PesquisaNaoEncontrada" />
+            }
+        </tbody>
+    </table>
+</div>

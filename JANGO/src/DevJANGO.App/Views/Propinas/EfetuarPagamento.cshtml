@@ -1,0 +1,106 @@
+﻿@model DevJANGO.App.ViewModels.PropinaViewModel
+@{
+    ViewData["Title"] = "Matricula do(a) - ";
+}
+
+<div class="container">
+    <h4>Efetuar Pagamentos</h4>
+    @*  <partial name="_ListaPropinaNaoPago"/> *@
+    <hr />
+    <div class="row">
+        <form enctype="multipart/form-data" asp-action="EfetuarPagamento">
+            <vc:Summary></vc:Summary>
+        <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="MesId" />
+            <input type="hidden" asp-for="Mes.Id" />
+            <input type="hidden" asp-for="Mes.NomeMes" />
+            <input type="hidden" asp-for="PagamentoPropina" />
+            <input type="hidden" asp-for="AlunoMatriculadoId" />
+            <input type="hidden" asp-for="ClasseId" />
+            <input type="hidden" asp-for="TurmaId" />
+            <input type="hidden" asp-for="Mes.NomeMes" class="form-control" />
+
+        <div class="row">
+          @*    <div class="form-group col-md-4">
+                <label asp-for="PrecoPropina" class="control-label"></label>
+                <input asp-for="PrecoPropina" class="form-control" />
+                <span asp-validation-for="PrecoPropina" class="text-danger"></span>
+            </div> *@
+                <div class="form-group col-md-4">
+
+                    <select asp-for="MesId" id="MesId" class="form-control"
+                            asp-items="@(new SelectList(ViewBag.Mes, "Value","Text"))">
+                        @* <option></option> *@
+                    </select>
+
+                    <span asp-validation-for="MesId" class="text-danger"></span>
+                </div>
+
+             <div class="form-group col-md-4">
+                    <div class="input-group input-spinner">
+                        <select id="QuantidadeMes" name="QuantidadeMes" asp-for="QuantidadeMes" class="form-control">
+                            <option value="0">Selecione o Número de Meses a Pagar</option>
+                            <option value="1">Um mês</option>
+                            <option value="2">Dois meses</option>
+                            <option value="3">Três meses</option>
+                            <option value="4">Quatro meses</option>
+                            <option value="5">Cinco meses</option>
+                            <option value="6">Seis meses</option>
+                            <option value="7">Sete meses</option>
+                            <option value="8">Oito meses</option>
+                            <option value="9">Nove meses</option>
+                            <option value="10">Dez meses</option>
+                            <option value="11">Onze meses</option>
+                            <option value="12">Doze meses</option>
+                        </select>
+                    </div>
+                    <span asp-validation-for="QuantidadeMes" class="text-danger"></span>
+                </div>
+             <div class="form-group col-md-4">
+                 <label asp-for="TipoPagamento"></label>
+                 <div>
+                     <input type="radio" value="1" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 1)" /> Transferencia
+                     <input type="radio" value="2" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 2)" /> Deposito 
+                     <input type="radio" value="3" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 3)" /> Cash
+                     <span asp-validation-for="TipoPagamento" class="text-danger"></span>
+                 </div>
+             </div>
+        </div>
+
+         @*    <h4>Meses a Pagar</h4>
+            <hr /> *@
+            <div class="row">
+               @*  <div class="form-group col-md-3">
+                    <div class="input-group input-spinner">
+                        <select id="Mes" name="Mes" asp-for="Mes" class="form-control">
+                            <option value="1">Setembro</option>
+                            <option value="2">Outubro</option>
+                            <option value="3">Novembro</option>
+                            <option value="4">Dezembro</option>
+                            <option value="5">Janeiro</option>
+                            <option value="6">Fevereiro</option>
+                            <option value="7">Março</option>
+                            <option value="8">Abril</option>
+                            <option value="9">Maio</option>
+                            <option value="10">Junho</option>
+                            <option value="11">Julho</option>
+                            <option value="12">Agosto</option>
+                        </select>
+                    </div>
+                </div> *@
+
+                
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Matricular" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<partial name="_ListaPropinaNaoPago"  />
+<br />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

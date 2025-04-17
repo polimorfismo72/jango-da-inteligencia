@@ -1,0 +1,23 @@
+﻿@* @model DevJANGO.App.ViewModels.ProdutoViewModel *@
+@model DevJANGO.App.ViewModels.PedidoViewModel
+<form method="post" asp-controller="Pedidos" asp-action="BuscarProduto">
+    @*  <vc:Summary></vc:Summary> *@
+    <div class="row text-end">
+        <div class="input-group col-md-3">
+            <input asp-for="Produto.Codigo" name="Codigo"
+              class="form-control" placeholder="Ensire o código do produto">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <span asp-validation-for="Produto.Codigo" class="text-danger"></span>
+    </div>
+</form>
+           
+     
+
+
+
+

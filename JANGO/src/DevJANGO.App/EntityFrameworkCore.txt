@@ -1,0 +1,57 @@
+﻿
+1-Comando para gerar as as entidades da Base de dado para a model da aplicação(Databese First)
+Scaffold-DbContext "Server=DESKTOP-P0JHDDB;Initial Catalog=JANGOBD;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;" 
+Microsoft.EntityFrameworkCore.SqlServer OutPutDir Models 
+=====================================================================================================================
+--------------------------------------- App -----------------------------------------
+DevIONETEC.App
+	AutoMapper
+	Configurations
+	Extensions
+	ViewModels
+Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 12.0.1
+Install-Package Microsoft.EntityFrameworkCore.Design -Version 7.0.10
+-------------------------------------- Business --------------------------------------
+DevIONETEC.Business
+	DomainException
+	Intefaces
+	Models
+	Notificacoes
+	Services
+Install-Package FluentValidation -Version 11.7.1
+-------------------------------------- Data -----------------------------------------
+DevIONETEC.Data
+	Context
+	DomainObjects
+	Mappings
+	Repository
+ 
+Install-Package Microsoft.EntityFrameworkCore -Version 7.0.15
+Install-Package Microsoft.EntityFrameworkCore.Relational -Version 7.0.15
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 7.0.15
+
+======================== Migration Entity Framework =====================================
+Add-Migration Initial -Verbose -Context JangoDbContext (Criar nova Migration)  
+Add-Migration Initial -Verbose -Context ApplicationDbContext
+
+Script-Migration -Context JangoDbContext  (Para gerar um script)
+G:\PROJECTO\IOnetec_Beta_2023\IONETEC\sql
+Script-Migration -Context ApplicationDbContext (Opcional)
+
+Update-Database -Context JangoDbContext (Executa o último ficheiro de migração)
+Update-Database -Context  ApplicationDbContext
+
+----------------Voltar a Migration -----------------
+Update-Database -Context JangoDbContext "Initial_3"
+Remove-Migration -Context JangoDbContext 
+
+Update-Database -Context ApplicationDbContext "Initial"
+Remove-Migration -Context ApplicationDbContext 
+Remove-Migration -Context SaudeMussuloDbContext 
+======================== Connection Strings ============================================
+
+ "ConnectionStrings": {
+  "DefaultConnection": "Server=DESKTOP-P0JHDDB;Database=IONETECBD;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;"
+    "DefaultConnection": "Server=DESKTOP-0HVAAP9\\SQLEXPRESS;Database=IONETECBD;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+=====================================================================================================================

@@ -1,0 +1,41 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.PedidoViewModel>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            @* <th>
+
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.AlunoMatriculado.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorDesconto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorTotal)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(c => c.Ativo == true))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlunoMatriculado.Nome)
+                </td>
+                <td>
+                    @* @Html.DisplayFor(modelItem => item.ValorDesconto) *@
+                    @this.FormatoMoeda((item.ValorDesconto))
+                </td>
+                <td>
+                  @*   @item.ValorTotal.ToString("C") *@
+                       @this.FormatoMoeda((item.ValorTotal))
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

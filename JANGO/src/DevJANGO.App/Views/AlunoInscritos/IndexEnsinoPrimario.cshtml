@@ -1,0 +1,119 @@
+﻿@using DevJANGO.App.Extensions
+@model PagedViewModel<AlunoInscritoViewModel>
+
+
+@{
+    ViewData["Title"] = "Lista dos Alunos";
+    Layout = "_ListaAlunoInscritoLayout";
+}
+
+
+<div class="container">
+    <h1>@ViewData["Title"] Inscritos no Ensino Primáiro</h1>
+
+    <vc:Summary></vc:Summary>
+
+    <div class="row align-items-center" style="margin: 6px;">
+        <div class="row">
+            <div class="col-lg-2 col-sm-2">
+                <a class="btn btn-info" asp-action="CreateEnsinoPrimario">Nova Inscrição</a>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <p style="margin: 7px;">
+                    @Model.List.Count() alunos
+                </p>
+            </div>
+            <div class="col-lg-8 col-sm-8">
+                <form method="get" asp-controller="AlunoInscritos" asp-action="IndexEnsinoPrimario" class="search">
+                    <div class="input-group w-100">
+                        <input type="text" id="q" name="q" class="form-control" value="@ViewBag.Pesquisa" placeholder="Procure pelo nome ou pelo número do documento!">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  @* <table class="table table-hover"> *@
+  <table class="table table-responsive-sm table-hover">
+        <partial name="_CabecalhoIndex" />
+  
+    <tbody>
+            @if (Model.List.Count() != 0)
+            {
+               @foreach (var aluno in Model.List.OrderBy(p => p.Nome))
+               {
+                <tr>
+                    <td>
+                        <img src="~/imagens/@aluno.Imagem" alt="@aluno.Imagem" style="width: 100px; height: 90px" />
+                    </td>
+                    <td>
+                        @aluno.Nome
+                    </td>
+                    <td>
+                        @this.FormataData(aluno.Datanascimento)
+                    </td>
+                    <td>
+                        @aluno.Idade
+                    </td>
+
+                    <td>
+                        @if (aluno.Sexo == true)
+                        {
+                            <span>Masculino</span>
+                        }
+                        else
+                        {
+                            <span>Femenino</span>
+
+                        }
+                    </td>
+                    <td>
+                        @aluno.NomeClasse
+                    </td>
+                    <td>
+                        @if (aluno.Estado == true)
+                        {
+                            <span style="color: #0d6efd;">Inscrição Finalizada</span>
+                        }
+                        else
+                        {
+                            <span class="text-warning">Inscrição Pendente</span>
+                        }
+                    </td>
+                    <td class="text-end">
+                        <a class="btn btn-info" asp-controller="AlunoInscritos" asp-action="Details" asp-route-id="@aluno.Id"><spam class="fa fa-search"></spam></a>
+                            <a class="btn btn-warning" asp-controller="AlunoInscritos" asp-action="EditEnsinoPrimario" asp-route-id="@aluno.Id"><spam class="fa fa-pencil-alt"></spam></a>
+                        <a class="btn btn-danger" asp-controller="AlunoInscritos" asp-action="Delete" asp-route-id="@aluno.Id"><spam class="fa fa-trash"></spam></a>
+                    </td>
+                </tr>
+               }
+            }
+            else
+            {
+               <tr>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <span class="text-danger" style="font-size:18px;">Pesquisa não encontrada!</span>
+                </td>
+
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+            }
+    </tbody>
+  </table>
+    <vc:paginacao modelo-paginado="@Model"></vc:paginacao>
+</div>

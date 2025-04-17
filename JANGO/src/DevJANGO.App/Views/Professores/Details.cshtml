@@ -1,0 +1,54 @@
+﻿@using DevJANGO.App.Extensions
+@model DevJANGO.App.ViewModels.ProfessorViewModel
+
+@{
+    ViewData["Title"] = "Detalhes do Professor(a)";
+}
+<br />
+<div class="container">
+    <h1>Professor(a) - @ViewBag.Nome</h1>
+    <hr />
+   
+    <div>
+      
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.BI)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.BI)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Telefone)
+            </dt>
+            <dd class = "col-sm-10">
+                @this.FormataTelefone(Model.Telefone)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Endereco)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Endereco)
+            </dd>
+       
+        </dl>
+    </div>
+    <hr />
+       <h4>Disciplinas que Leciona</h4>
+    <hr />
+    <vc:Summary></vc:Summary>
+    <div>
+        <partial name="../ProfessorDisciplinaClasses/_ListaDisciplinaPorProfessor" model="@Model.ProfessorDisciplinaClasses" />
+    </div>
+    <div>
+        <a class="btn btn-dark" asp-controller="Professores" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+        <a class="btn btn-info" asp-controller="Professores" asp-action="Index">Voltar</a>
+    </div>
+</div>
+

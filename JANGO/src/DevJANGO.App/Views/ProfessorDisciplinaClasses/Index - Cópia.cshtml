@@ -1,0 +1,62 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.ProfessorDisciplinaClasseViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Professor";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"] e suas disciplinas</h1>
+    <vc:Summary></vc:Summary>
+
+    <p>
+        <a class="btn btn-info" asp-action="Create">Adicionar Disciplina ao Professor</a>
+        <a class="btn btn-warning" asp-controller="Professores" asp-action="Index">Localizar Professores</a>
+    </p>
+    <table class="table table-hover">
+        <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Professor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeDisciplina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeClasse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnoLetivo)
+            </th> 
+        
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+             <td>
+                @Html.DisplayFor(modelItem => item.Professor.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeDisciplina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeClasse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnoLetivo)
+            </td>
+      
+            <td class="text-end">
+                <a class="btn btn-warning" asp-controller="Professores" asp-action="Details" asp-route-id="@item.ProfessorId"><spam class="fa fa-pencil"></spam></a>
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+</div>
+<br />
+

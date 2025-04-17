@@ -1,0 +1,49 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.PagamentoPropinaViewModel>
+
+@{
+    ViewData["Title"] = "Lista das Pagamentos";
+    Layout = "/Areas/Encarregado/Views/Shared/_LayoutEncarregado.cshtml";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <vc:Summary></vc:Summary>
+
+    <table class="table table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayName("Nome do aluno")
+                </th>
+                <th>
+                    @Html.DisplayName("Estado")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AlunoMatriculado.Nome)
+                    </td>
+                    <td>
+                        @if (item.Ativo == true)
+                        {
+                            <span style="color: #0d6efd;">Pago: @this.FormatoMoeda(item.TotalPago)</span>
+                        }
+                        else
+                        {
+                            <span class="text-warning">Aguarde pela validação do pagamento</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<br />

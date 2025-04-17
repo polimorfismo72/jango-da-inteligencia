@@ -1,0 +1,717 @@
+﻿@model IEnumerable<DevJANGO.Business.Models.AlunoInscrito>
+
+
+<div class="container-xxl py-5">
+    @{
+        string anoLetivo;
+        DateTime agora = DateTime.Today;
+        int ano = agora.Year;
+        int mes = agora.Month;
+        int dia = agora.Day;
+
+        if (mes <= 6 && dia <= 31)
+        {
+            int anoTransato = ano - 1;
+            anoLetivo = $"{anoTransato}-{ano}";
+        }
+        else
+        {
+            int anoAtual = ano + 1;
+            anoLetivo = $"{ano}-{anoAtual}";
+        }
+        var x = anoLetivo;
+    }
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h3 class="mb-3">
+                @Model.Count() alunos Inscritos e @Model.Where(a => a.AnoLetivo == x).Count() Alunos no Ano lectivo @x
+            </h3>
+        </div>
+        <hr />
+        @* Ensino Primario *@
+        <div>
+            <p class="text-center">
+                Ensino Primário  : @Convert.ToInt32(Model.Where(a => a.AnoLetivo == x && a.NiveisDeEnsino.NomeNiveisDeEnsino == "Iniciação").Count() + Model.Where(a => a.AnoLetivo == x && a.NiveisDeEnsino.NomeNiveisDeEnsino == "Primário").Count())
+                | <span class="text-primary">Masculino:</span>
+                @Convert.ToInt32(Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Iniciação" && a.AnoLetivo == x && a.Sexo == true).Count() + Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Primário" && a.AnoLetivo == x && a.Sexo == true).Count())
+                | <span class="text-success">Femenino:</span>
+                @Convert.ToInt32(Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Iniciação" && a.AnoLetivo == x && a.Sexo == false).Count() + Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Primário" && a.AnoLetivo == x && a.Sexo == false).Count())
+            </p>
+            <div class="row">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Iniciação</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "Pré" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "Pré" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "Pré" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">1ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "1ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "1ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "1ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">2ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "2ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "2ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "2ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">3ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "3ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "3ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "3ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">4ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "4ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "4ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "4ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">5ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "5ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "5ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "5ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                           @*  <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">3ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "3ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "3ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "3ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> *@
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="classes-item">
+                            @* <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">4ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "4ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div> 
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "4ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "4ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> *@
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">6ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "6ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "6ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "6ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+       <br />
+       <hr />
+        @*  Priméiro Ciclo *@
+        <div>
+
+            <p class="text-center">
+                Priméiro Ciclo : @Model.Where(a => a.AnoLetivo == x && a.NiveisDeEnsino.NomeNiveisDeEnsino == "I Ciclo").Count() alunos
+                | <span class="text-primary">Masculino:</span>
+                @Convert.ToInt32(Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "I Ciclo" && a.AnoLetivo == x && a.Sexo == true).Count())
+                | <span class="text-success">Femenino:</span>
+                @Convert.ToInt32(Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "I Ciclo" && a.AnoLetivo == x && a.Sexo == false).Count())
+            </p>
+            <div class="row">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">7ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "7ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "7ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "7ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">8ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "8ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "8ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "8ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">9ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "9ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "9ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "9ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <hr />
+        @* Alfabetização *@
+        <div>
+
+            <p class="text-center">
+                PRAEER :@Convert.ToInt32(Model.Where(a => a.AnoLetivo == x && a.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa I").Count() + Model.Where(a => a.AnoLetivo == x && a.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa II").Count() + Model.Where(a => a.AnoLetivo == x && a.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa III").Count()) alunos
+                | <span class="text-primary">Masculino:</span>
+                @Convert.ToInt32(Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa I" && a.AnoLetivo == x && a.Sexo == true).Count() + Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa II" && a.AnoLetivo == x && a.Sexo == true).Count() + Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa III" && a.AnoLetivo == x && a.Sexo == true).Count())
+                | <span class="text-success">Femenino:</span>
+                @Convert.ToInt32(Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa I" && a.AnoLetivo == x && a.Sexo == false).Count() + Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa II" && a.AnoLetivo == x && a.Sexo == false).Count() + Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "Etapa III" && a.AnoLetivo == x && a.Sexo == false).Count())
+            </p>
+            <div class="row">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Etapa I</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "I Ciclo" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "I Ciclo" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "I Ciclo" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Etapa II</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "II Ciclo" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "II Ciclo" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "II Ciclo" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Etapa III</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "III Ciclo" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "III Ciclo" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "III Ciclo" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <hr />
+        @* II Ciclo *@
+        <div>
+            <p class="text-center">
+                II Ciclo :@Model.Where(a => a.AnoLetivo == x && a.NiveisDeEnsino.NomeNiveisDeEnsino == "II Ciclo").Count() alunos
+                | <span class="text-primary">Masculino:</span>
+                @Convert.ToInt32(Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "II Ciclo" && a.AnoLetivo == x && a.Sexo == true).Count())
+                | <span class="text-success">Femenino:</span>
+                @Convert.ToInt32(Model.Where(a => a.NiveisDeEnsino.NomeNiveisDeEnsino == "II Ciclo" && a.AnoLetivo == x && a.Sexo == false).Count())
+            </p>
+            <div class="row">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">10ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "10ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "10ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "10ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">11ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "11ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "11ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "11ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="classes-item">
+                            <div class="bg-light rounded p-4 pt-5 mt-n5">
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">12ª Classe</a>
+                                <div class="row g-1">
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-primary pt-2">
+                                            <h6 class="text-primary mb-1">Masculino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "12ª" && a.Sexo == true && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-success pt-2">
+                                            <h6 class="text-success mb-1">Femenino:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "12ª" && a.Sexo == false && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="border-top border-3 border-warning pt-2">
+                                            <h6 class="text-warning mb-1">Total:</h6>
+                                            <small>
+                                                @Model.Where(a => a.Classe.Nome == "12ª" && a.AnoLetivo == x).Count()
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

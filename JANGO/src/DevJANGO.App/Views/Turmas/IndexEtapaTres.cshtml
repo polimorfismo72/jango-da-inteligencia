@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DevJANGO.App.ViewModels.TurmaViewModel>
+
+@{
+    ViewData["Title"] = "Lista das Turmas";
+    Layout = "_TurmaLayout";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"] da Etapa III</h1>
+
+    <vc:Summary></vc:Summary>
+    <p>
+        <a class="btn btn-info" asp-action="CreateEtapaTres">Nova Turma</a>
+    </p>
+    <table class="table table-hover">
+        <thead class="table-dark">
+        <tr>
+            <th>
+               @Html.DisplayName("Nome Da Turma")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumDeVagas)
+            </th>
+            <th>
+                @Html.DisplayName("Area De Conhecimento")
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Classe)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeTurma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumDeVagas)
+            </td>
+           <td>
+               @Html.DisplayFor(modelItem => item.AreaDeConhecimento.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classe.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+             <td class="text-end">
+                 <a class="btn btn-info" asp-controller="Turmas" asp-action="Details" asp-route-id="@item.Id"><spam class="fa fa-search"></spam></a>
+                 <a class="btn btn-warning" asp-controller="Turmas" asp-action="Edit" asp-route-id="@item.Id"><spam class="fa fa-pencil-alt"></spam></a>
+                 <a class="btn btn-danger" asp-controller="Turmas" asp-action="Delete" asp-route-id="@item.Id"><spam class="fa fa-trash"></spam></a>
+             </td>
+        </tr>
+}
+        </tbody>
+    </table>
+</div>
+<br />
+<br />

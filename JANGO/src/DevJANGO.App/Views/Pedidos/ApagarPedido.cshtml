@@ -1,0 +1,25 @@
+﻿@model DevJANGO.App.ViewModels.PedidoViewModel
+
+@{
+    ViewData["Title"] = "Pedido do(a) sr(a)-";
+}
+
+<vc:Summary></vc:Summary>
+<hr />
+<form asp-action="ApagarPedido">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+    <div class="row">
+                 @* PRODUTO A SER EDITADO *@
+         <input type="hidden" asp-for="Produto.Id" />    
+        <input type="hidden" asp-for="Produto.Nome" class="form-control" />
+        <input type="hidden" asp-for="Produto.Descricao" class="form-control" />
+        <input type="hidden" asp-for="Produto.ValorVenda" class="form-control" />
+        <input type="hidden" asp-for="Produto.QuantidadeEstoque" class="form-control" />
+        <input type="hidden" asp-for="Produto.Ativo" class="form-control" /> 
+    </div>
+   
+</form>
+
+

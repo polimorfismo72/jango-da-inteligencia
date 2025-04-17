@@ -1,0 +1,10 @@
+﻿@model DevJANGO.App.ViewModels.PagamentoPropinaViewModel;
+<input type="hidden" asp-for="Propina.PagamentoPropinaId" value="@ViewBag.Id" readonly="readonly" class="form-control" />
+<input type="hidden" asp-for="Propina.DescricaoPropina" value="mes" class="form-control" />
+
+        <select asp-for="Propina.Id" id="Id" class="form-control"
+           asp-items="@(new SelectList(ViewBag.Mes, "Value","Text"))">
+        </select>
+        <span asp-validation-for="Propina.Id" class="text-danger"></span>
+<br />
+

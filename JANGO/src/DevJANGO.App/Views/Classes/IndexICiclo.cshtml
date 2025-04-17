@@ -1,0 +1,19 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.ClasseViewModel>
+
+@{
+    ViewData["Title"] = "Lista das Classes do I Ciclo";
+    Layout = "_ClasseLayout";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <vc:Summary></vc:Summary>
+    <p>
+        <a class="btn btn-info" asp-action="CreateICiclo">Nova Classe</a>
+    </p>
+    <partial name="_ListaIndex" />
+</div>
+<br />

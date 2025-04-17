@@ -1,0 +1,16 @@
+﻿@model IEnumerable<DevJANGO.App.ViewModels.PropinaViewModel>
+
+@{
+    ViewData["Title"] = "Lista das Propinas";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <vc:Summary></vc:Summary>
+      
+    <partial name="_ListaPropinaAlunoMatriculado" />
+</div>
+<br />
+<br />

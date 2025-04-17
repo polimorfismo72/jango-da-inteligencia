@@ -1,0 +1,36 @@
+﻿@model DevJANGO.App.ViewModels.AplicaMultaViewModel
+
+@{
+    ViewData["Title"] = "Nova aplicação de multa";
+    Layout = "/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<div class="container">
+    <h1 class="text-danger">Tem a certeza que quer aplicar multa aos alunos
+        com propinas em atraso do mês de @DateTime.Today.ToString("MMMM")?</h1>
+    <hr />
+    <div class="row">
+        <form enctype="multipart/form-data" asp-action="Create">
+            <vc:Summary></vc:Summary>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <h2 class="control-label">Por favor submeta a aplicação da multa do mês de @DateTime.Today.ToString("MMMM")</h2>
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Submeter" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<br />
+<br />

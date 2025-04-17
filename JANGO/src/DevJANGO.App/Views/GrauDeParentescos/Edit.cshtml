@@ -1,0 +1,30 @@
+﻿@model DevJANGO.App.ViewModels.GrauDeParentescoViewModel
+
+@{
+    ViewData["Title"] = "Editar Encarregado ";
+}
+
+<div class="container">
+    <h3>@ViewData["Title"]</h3>
+    <hr />
+    <div class="row">
+        <form enctype="multipart/form-data" asp-action="Edit">
+            <vc:Summary></vc:Summary>
+
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="NomeGrauParentesco" class="control-label"></label>
+                <input asp-for="NomeGrauParentesco" class="form-control" />
+                <span asp-validation-for="NomeGrauParentesco" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin:5px;">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

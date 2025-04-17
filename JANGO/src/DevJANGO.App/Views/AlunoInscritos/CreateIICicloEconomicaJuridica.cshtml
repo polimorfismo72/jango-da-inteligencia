@@ -1,0 +1,28 @@
+﻿@model DevJANGO.App.ViewModels.AlunoInscritoViewModel
+
+
+@{
+    ViewData["Title"] = "Inscrição";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"] Para II Ciclo Economica Jurídica</h1>
+    <hr />
+    <div class="row">
+
+        <form enctype="multipart/form-data" asp-action="CreateIICicloEconomicaJuridica">
+            <vc:Summary></vc:Summary>
+            <partial name="_CriarEnsinoSecundario" />
+
+            <div class="form-group">
+                <input type="submit" value="Adicionar" class="btn btn-success" />
+                <a class="btn btn-info" asp-action="IndexIICicloEconomicaJuridica">Voltar</a>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+

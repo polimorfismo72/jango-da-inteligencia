@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DevJANGO.App.ViewModels.PropinaViewModel>
+
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DescricaoPropina)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrecoPropina)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AnoLetivo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Situacao)
+                    </th>
+                   
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DescricaoPropina)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrecoPropina)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AnoLetivo)
+                        </td>
+                        <td>
+                            @if (item.Situacao == 1)
+                            {
+                                <span class="text-primary">Pago</span>
+                            }
+                            else
+                            {
+                                <span class="text-warning">Matricula Pendente</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+ 

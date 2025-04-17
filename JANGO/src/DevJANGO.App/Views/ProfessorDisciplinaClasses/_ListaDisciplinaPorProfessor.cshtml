@@ -1,0 +1,68 @@
+﻿@model IEnumerable<DevJANGO.App.ViewModels.ProfessorDisciplinaClasseViewModel>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Disciplina")
+            </th>
+            <th>
+                @Html.DisplayName("Classe")
+            </th>
+            <th>
+                @Html.DisplayName("Ano Lectivo")
+            </th>
+            <th>
+                <a class="btn btn-success" asp-controller="ProfessorDisciplinaClasses" asp-action="Create">Atribuir Disciplina</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() != 0)
+        {
+           @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeDisciplina)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeClasse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnoLetivo)
+                </td>
+
+                <td>
+                    <a class="btn btn-info" asp-controller="ProfessorDisciplinaClasses" asp-action="EditarDisciplina" asp-route-id="@item.Id"><spam class="fa fa-search"></spam></a>
+                    <a class="btn btn-danger" asp-controller="ProfessorDisciplinaClasses" asp-action="Apagar" asp-route-id="@item.Id"><spam class="fa fa-trash"></spam></a>
+                     
+                </td>
+            </tr>
+        }
+        }
+        else
+        {
+            <tr>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+
+                <td>
+                    <span class="text-danger" style="font-size:18px; text-align:center;">Pesquisa não encontrada!</span>
+                </td>
+
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

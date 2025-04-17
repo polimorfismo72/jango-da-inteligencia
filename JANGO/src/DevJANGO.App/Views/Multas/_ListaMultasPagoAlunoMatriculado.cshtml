@@ -1,0 +1,49 @@
+﻿@using DevJANGO.App.Extensions
+@model IEnumerable<DevJANGO.App.ViewModels.MultaViewModel>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayName("Descrição da Multa")
+            </th>
+            <th>
+                @Html.DisplayName("Valor")
+            </th>
+            <th>
+                @Html.DisplayName("Ano Lectivo")
+            </th>
+            <th>
+                @Html.DisplayName("Situação")
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(c => c.Estado == true))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescricaoMulta)
+                </td>
+                <td>
+                    @this.FormatoMoeda(item.PrecoPropina)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnoLetivo)
+                </td>
+                <td>
+                    @if (item.Estado == true)
+                    {
+                        <span class="text-primary">Pago</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger">Dívida</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+﻿@using DevJANGO.App.Extensions
+@model DevJANGO.App.ViewModels.EncarregadoViewModel
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+<br />
+<br />
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+       <div>
+           <h4>Informação somente leitura</h4>
+           <hr />
+       <dl class="row">
+           <dt class = "col-sm-2">
+               @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+        <dd class = "col-sm-10">
+           @*  @Html.DisplayFor(model => model.Telefone) *@
+            @this.FormataTelefone(Model.Telefone)
+        </dd>
+        <dt class = "col-sm-2">
+                @Html.DisplayName("Profição")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Proficao)
+        </dd>
+    </dl>
+        </div>
+        <div>
+            <a class="btn btn-dark" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+            <a class="btn btn-info" asp-action="Index">Voltar</a>
+        </div>
+    </div>
+    <br />
+    <br />

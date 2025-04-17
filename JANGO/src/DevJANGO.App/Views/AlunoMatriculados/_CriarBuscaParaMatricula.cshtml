@@ -1,0 +1,22 @@
+﻿@model DevJANGO.App.ViewModels.AlunoMatriculadoViewModel
+
+<form method="post" asp-controller="AlunoMatriculados" asp-action="Buscar">
+    <div class="row text-end">
+        <div class="input-group col-md-3">
+            <input asp-for="NumDocumento" name="NumDocumento"
+                   class="form-control" placeholder="O documento do aluno é obrigatório para efetuar a busca">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <span asp-validation-for="NumDocumento" class="text-danger"></span>
+    </div>
+</form>
+           
+     
+
+
+
+

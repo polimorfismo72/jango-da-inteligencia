@@ -1,0 +1,46 @@
+﻿
+--------------------------------------------------------------------------------------------------------------------
+| Módulo 1-Administrativo          |    Módulo 2-Financeiro                |   Módulo 3-Pedagógico 	               | 
+| 1-Inscrição					   |    1-Pagamento de Propinas 		   |    1-Avalição diária				   | 
+| 1.1-Feita pela escola		       |	 1.1 -Feita pela escola			   |    2-Avalição trimestral			   | 
+| 1.1-Feita pelo encarredo   	   |	 1.1 -Feita pelo encarredo		   |    3-Pauta do aluno				   |   
+| 2-Matrícula 		        	   |    2-Gerar faturas 				   |    4-Pauta da turma				   | 
+|  2.1-Feita pela escola		   |	   2.1-De Inscrição				   |    5-Estatíscas de 0 à 4 e por idades |  
+|  2.2-Feita pelo encarredo		   |	   2.2-Da Matrícula				   |    6-Certificados                     |
+|								   |	   2.3-Do Pagamento de Propinas	   |                                       |
+|                                  |	2.4-Da Reconfirmação da Matrícula  |                                       |
+|                                  |	 3-Dashboard financeiro			   |                                       |
+|                                  |                                       |                                       |
+--------------------------------------------------------------------------------------------------------------------                                                                                 
+
+  Base de Dados Teste ------------ JANGOBD
+  Base de Dados Em Produção ------ TESTE_JANGOBD_Restore 
+  
+   //ModelState.AddModelError(string.Empty, "Já existe um arquivo com este nome!");
+
+   1-Atualizar As Listas dos alunos matriculados com a busca e filtros; -----Ok
+   2-Verificar se o algoritimo que gera o ano letivo para a inscrição e a matricula está de acordo com o pretendido;------- Não
+   3- Incluir um campo(do tipo bit) para diferenciar os alunos internos e externos de modos que os alunos internos a 
+   serem inscritos na plataforma pela primeira vez não sejam contablizados na estatistica financeira.-----Ok
+   4-Incluir na lista de detalhes o nume do funcionario que executou a tarefa. --------Ok
+   ----------------------------------------------------------------------------------------------
+   1- Criar metodos Edit para Etapa Um, Dois e Tres -----Ok;
+   5- Concluir as Queries das Matriculas Pendentes -----Ok;
+
+   6- Terminar a estatistica de Nº de alunos -----Ok;
+   7- Fazer o serviço automatizado para aplicar multas aos alunos com propinas em atraso---- OK;
+   8- A lista de Produtos não apresenta a página ----------- Ok
+   9-Funcionalidade de Disciplina-------OK
+   10-Alterar o Crud de Atribuição de Discilina ao Professor ----------- OK
+   11-Alterar o número de vagas na iniciação de 45 para 36 ----------- OK
+   12-Alterar a legenda na estatistica de Alfabetização para PRAEER ----------- OK
+   13-Visualização da lista dos alunos por parte Dos Encarregados-----OK
+   14-Suzete tem todas as permisões do sistema--------OK
+
+   15- A Funcionalidade Editar para a Controller Classes --------OK
+   16- Terminar a estatistica Financeira;
+   17- Criar a avaliação dos alunos;
+   18- Pautas e mini pautas;
+   19- Reconfirmação de Matricula;
+ 
+ 

@@ -1,0 +1,111 @@
+﻿@model DevJANGO.App.ViewModels.AlunoMatriculadoViewModel
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+    <div>
+        <img src="~/imagens/@Model.Imagem" alt="@Model.Imagem" style="width: 100px; height: 120px" />
+    </div>
+    <br />
+    <h3 style="margin:7px;">@Model.Nome, @Model.Classe.Nome classe turma @Model.Turma.NomeTurma</h3>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-3">
+            <dl>
+                <dt class="col-sm-2">
+                    @Html.DisplayName("Cédula/BI")
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.NumDocumento)
+                </dd>
+                <dt class="col-sm-5">
+                    @Html.DisplayName("Ano Lectivo")
+                </dt>
+                <dd class="col-sm-7">
+                    @Html.DisplayFor(model => model.AnoLetivo)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-3">
+            <dl>
+               
+                <dt class="col-sm-2">
+                    @Html.DisplayName("Endereço")
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.AlunoInscrito.Endereco)
+                </dd>
+
+                <dt class="col-sm-6">
+                    @Html.DisplayName("Nível de Ensino")
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.NiveisDeEnsino.NomeNiveisDeEnsino)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-3">
+            <dl>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Curso)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Curso.Nome)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Encarregado)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Encarregado.Nome)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-3">
+            <dl>
+               
+                <dt class="col-sm-2">
+                    @Html.DisplayName("Parentesco")
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.GrauDeParentesco.NomeGrauParentesco)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayName("Funcionário")
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.FuncionarioCaixa.Nome)
+                </dd>
+        
+            </dl>
+        </div>
+    </div>
+
+    <div style="margin:3px;">
+    <a class="btn btn-primary" type="submit" asp-controller="AlunoMatriculados" asp-action="ImprimirMatricula" asp-route-id="@Model.Id">
+        <i>Imprimir Fatura</i>
+    </a>
+    <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+    </div>
+    <br />
+
+    <h2 class="text-center bg-primary">Historico Financeiro</h2>
+
+    <h4>Propinas Pagas</h4>
+    <hr />
+    <partial name="_ListaPropinaPagoAlunoMatriculado" model="@Model.Propinas" />
+
+    <h4>Propinas por pagar opcionalmente</h4>
+    <hr />
+    <partial name="_ListaPropinaNaoPagoAlunoMatriculado" model="@Model.Propinas" />
+     <hr />
+
+    <h4>Dívidas de Propinas</h4>
+    <hr />
+    <partial name="../Multas/_ListaMultasNaoPagoAlunoMatriculado" model="@Model.Multas" />
+
+    <h4>Multas de Propinas</h4>
+    <hr />
+    <partial name="../Multas/_ListaMultasPagoAlunoMatriculado" model="@Model.Multas" />
+
+

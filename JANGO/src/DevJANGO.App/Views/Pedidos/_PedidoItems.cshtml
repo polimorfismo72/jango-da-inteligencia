@@ -1,0 +1,16 @@
+﻿@model DevJANGO.App.ViewModels.PedidoViewModel;
+
+<input type="hidden" asp-for="PedidoItem.PedidoId" value="@ViewBag.Id" readonly="readonly" class="form-control" />
+<input type="hidden" asp-for="PedidoItem.NomeProduto" value="produto" class="form-control" />
+<input type="hidden" asp-for="PedidoItem.FuncionarioCaixaId"  class="form-control" />
+
+<div class="row">
+    <div class="form-group col-md-4">
+        <label asp-for="PedidoItem.Quantidade" class="control-label"></label>
+        <input asp-for="PedidoItem.Quantidade" min="1" value="5" class="form-control" />
+        <span asp-validation-for="PedidoItem.Quantidade" class="text-danger"></span>
+    </div>
+</div>
+          
+ <br />
+

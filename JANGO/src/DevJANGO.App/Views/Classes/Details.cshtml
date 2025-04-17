@@ -1,0 +1,58 @@
+﻿@using DevJANGO.App.Extensions
+@model DevJANGO.App.ViewModels.ClasseViewModel
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<div class="container">
+   <div>
+    <h4>TurmaViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayName("Nome Da Classe")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrecoPropina)
+        </dt>
+        <dd class = "col-sm-10">
+            @this.FormatoMoeda(Model.PrecoPropina)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayName("Niveis de Ensino")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NiveisDeEnsino.NomeNiveisDeEnsino)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayName("Nome Do Curso")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Curso.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayName("É classe de Exame?")
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.ClassDeExame == true)
+            {
+                <span>Sim</span>
+            }
+            else
+            {
+                <span>Não</span>
+
+            }
+        </dd>
+    </dl>
+   </div>
+
+   <div>
+        <a class="btn btn-dark" asp-controller="Classes" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+        <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+   </div>
+</div>

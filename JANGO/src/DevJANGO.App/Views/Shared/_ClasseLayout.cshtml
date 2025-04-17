@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card login-logout-tab" style="border:0px;">
+
+            <div class="card-header" style="background-color:white;">
+
+                <ul class="nav nav-tabs card-haeder-tabs" style="border:2px;">
+                   
+                    <li class="nav-item" style="background-color:#F21628;">
+                        <a class="nav-link" style="color:white;" href="lista-de-classe-iniciacao">Iniciação</a>
+                    </li>
+                    
+                    <li class="nav-item" style="background-color:#5288F2;">
+                        <a class="nav-link" style="color:white;" href="lista-de-classe-ensino-primario">Ensino Primário</a>
+                    </li>
+
+                    <li class="nav-item" style="background-color:#F21628;">
+                        <a class="nav-link" style="color:white;" href="lista-de-classe-primeiro-ciclo">I Ciclo</a>
+                    </li>
+                    
+                    <li class="nav-item" style="background-color:#5288F2;">
+                        <a class="nav-link" style="color:white;" href="lista-de-classe-segundo-ciclo-fb">II Ciclo - Físicas Biologicas</a>
+                    </li>
+
+                    <li class="nav-item" style="background-color:#F21628;">
+                        <a class="nav-link" style="color:white;" href="lista-de-classe-segundo-ciclo-ej">II Ciclo - Economicas e Juridicas</a>
+                    </li>
+
+                    <li class="nav-item" style="background-color:#5288F2;">
+                        <a class="nav-link" style="color:white;" href="lista-de-classe-na-etapa-um">Etapa I</a>
+                    </li>
+
+                    <li class="nav-item" style="background-color:#F21628;">
+                        <a class="nav-link" style="color:white;" href="lista-de-classe-na-etapa-dois">Etapa II</a>
+                    </li>
+
+                    <li class="nav-item" style="background-color:#5288F2;">
+                        <a class="nav-link" style="color:white;" href="lista-de-classe-na-etapa-tres">Etapa III</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+  
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        $(function () {
+            var corrent = location.pathname;
+            $('.nav-tabs li a').each(function () {
+                var $this = $(this);
+                if (current.indexOf($this.attr('href')) !== -1) {
+                    $this.addClass('active');
+                }
+            })
+        })
+    </script>
+}

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<DevJANGO.App.ViewModels.PagamentoPropinaViewModel>
+
+@{
+    ViewData["Title"] = "Lista das Pagamentos";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"] Finalizados</h1>
+
+    <vc:Summary></vc:Summary>
+      
+    <partial name="_ListaPagamentoFinalizado" />
+</div>
+<br />
+<br />

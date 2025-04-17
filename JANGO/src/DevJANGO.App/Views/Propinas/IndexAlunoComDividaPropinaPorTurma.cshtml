@@ -1,0 +1,97 @@
+﻿@using DevJANGO.App.Extensions
+@model PagedViewModel<PropinaViewModel>
+@{
+    ViewData["Title"] = " Lista nominal";
+    var N = Model.List.Count();
+    IEnumerable<int> squares = Enumerable.Range(N, 1).ToList();
+    int v = @Convert.ToInt32(squares.Count());
+}
+    
+<div class="container">
+    <h1 class="text-center">@ViewData["Title"] da @Model.List.Select(a => a.Classe).FirstOrDefault() Classe, turma @ViewBag.Pesquisa</h1>
+    <vc:Summary></vc:Summary>
+   @*  <div class="row align-items-center" style="margin: 6px;">
+        <div class="row">
+            <div class="col-lg-2 col-sm-2">
+                <p style="margin: 7px;">
+                    @Model.List.Count() aluno(s)
+                </p>
+            </div>
+             
+            <div class="col-lg-2 col-sm-2">
+                <a class="btn btn-primary" type="submit" asp-controller="Propinas" asp-action="ImprimirAlunoNaTurmaComDivida" asp-route-id="@Model.List.Select(a => a.Id).FirstOrDefault()">
+                    <i>Imprimir a Lista</i>
+                </a> 
+            </div>
+           
+            <div class="col-lg-8 col-sm-8">
+                <form method="get" asp-controller="Propinas" asp-action="IndexAlunoComDividaPropinaPorTurma" class="search">
+                    <div class="input-group w-100">
+                        <input type="text" id="turma" name="turma" class="form-control" value="@ViewBag.Pesquisa" placeholder="Procure pelo nome da turma!">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> *@
+   
+       <table class="table table-responsive-sm table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayName("Nome")
+                </th>
+                <th>
+                    @Html.DisplayName("Turma")
+                </th>
+                <th>
+                    @Html.DisplayName("Classe")
+                </th>
+                <th>
+                    @Html.DisplayName("Meses")
+                </th>
+                <th>
+                    @Html.DisplayName("Propinas Em Atraso")
+                </th>
+            </tr>
+        </thead>
+            <tbody>
+            @if (Model.List.Count() != 0)
+            {
+                @foreach (var aluno in Model.List)
+                {
+                    <tr>
+                        <td>
+                            @(v++)
+                        </td>
+                         <td>
+                            @aluno.Nome
+                          </td>
+                          <td>
+                            @aluno.NomeDaTurma
+                           
+                          </td>
+                        <td>
+                            @aluno.NomeDaClasse
+                        </td>
+                        <td>
+                            @aluno.Meses                            
+
+                        </td>
+                          <td>
+                            @this.FormatoMoeda(aluno.PropinasEmAtraso)
+                          </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <partial name="_PesquisaNaoEncontrada" />
+            }
+            </tbody>
+        </table>
+</div>

@@ -1,0 +1,33 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Ocorreu um erro";
+}
+
+
+<!-- Page Header End -->
+<div class="container-xxl py-5 page-header position-relative mb-5">
+    <div class="container py-5">
+        <h1 class="display-2 text-white animated slideInDown mb-4"></h1>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- 404 Start -->
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+      <div class="text-center">
+        <h1 class="display-1">Erro @Html.Raw(Model.ErroCode)!</h1>
+             @{
+                 if (Model == null)
+                 {
+                     <div>
+                         <h2>Ooops! Ocorreu um erro, mas não se preocupe. Nosso time será avisado e iremos corrigir em breve!</h2>
+                     </div>
+                 }
+                 else
+                 {
+                     // <h1>@Html.Raw(Model.Titulo)</h1>
+                     <h2 class="text-danger">@Html.Raw(Model.Mensagem)</h2>
+                 }
+             }
+      </div>
+</div>
+<!-- 404 End -->

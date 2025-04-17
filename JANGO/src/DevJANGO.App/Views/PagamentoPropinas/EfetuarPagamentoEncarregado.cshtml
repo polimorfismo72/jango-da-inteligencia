@@ -1,0 +1,79 @@
+﻿@model DevJANGO.App.ViewModels.PagamentoPropinaViewModel
+@{
+    ViewData["Title"] = "Pagamentos";
+}
+<div class="container">
+    <h1>@ViewData["Title"] do Aluno(a) - @ViewBag.Nome</h1>
+    <hr />
+    <div class="row">
+    <form  asp-action="EfetuarPagamento">
+            <vc:Summary></vc:Summary>
+        <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="AlunoMatriculadoId" />
+            <input type="hidden" asp-for="FuncionarioCaixaId" />
+         
+        <div class="row">
+
+          @*    <div class="form-group col-md-3">
+                    <input type="hidden" asp-for="NumeroDeTransacaoDePagamento" class="form-control" />
+             </div> *@
+
+             <div class="form-group col-md-2">
+                    <input type="hidden" asp-for="ValorDesconto" class="form-control" />
+             </div>
+
+       @*       <div class="form-group col-md-3">
+                    <input type="hidden" asp-for="PercentualDesconto" class="form-control" />
+             </div> *@
+
+             <div class="form-group col-md-3">
+                 <label asp-for="TipoPagamento"></label>
+                 <div>
+                     <input type="radio" value="1" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 1)" /> Transferencia
+                     <input type="radio" value="2" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 2)" /> Deposito
+                     <input type="radio" value="3" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 3)" /> Cash
+                     <input type="radio" value="4" asp-for="TipoPagamento" checked="@(Model.TipoPagamento == 4)" /> TPA
+                     <span asp-validation-for="TipoPagamento" class="text-danger"></span>
+                 </div>
+             </div>
+
+        </div>
+     
+        <h4>Meses a Pagar</h4>
+        <hr />
+        <div class="row">
+
+            <div class="form-group col-md-4">
+                    <partial name="_PropinaAlunoMatriculado" />
+            </div>
+         
+        </div>
+  
+            <div class="form-group">
+                <input type="submit" value="Pagar" class="btn btn-primary" />
+            </div>
+            <br />
+
+            <h4>Items do Pagamento</h4>
+            <hr />
+            <div>
+                <partial name="_Propinas" model="@Model.Propinas" />
+            </div>
+          
+           
+            <div class="text-end">
+                <a class="btn btn-info" type="submit" asp-controller="PagamentoPropinas" asp-action="Index">
+                    <i>Finalizar pagamento</i>
+                </a>
+            </div>
+        </form>
+    </div>
+   
+  
+</div>
+
+@* <partial name="_ListaPropinaNaoPago" /> *@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

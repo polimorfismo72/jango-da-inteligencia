@@ -1,0 +1,68 @@
+﻿@model DevJANGO.App.ViewModels.ProfessorViewModel
+
+@{
+    ViewData["Title"] = "Novo Professor";
+}
+
+<br />
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <hr />
+    <div class="row">
+
+        <form enctype="multipart/form-data" asp-action="Create">
+            <vc:Summary></vc:Summary>
+   
+
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" id="nome_contacto" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BI" class="control-label"></label>
+                <input asp-for="BI" class="form-control" />
+                <span asp-validation-for="BI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefone" class="control-label"></label>
+                <input asp-for="Telefone" class="form-control" />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endereco" class="control-label"></label>
+                <input asp-for="Endereco" class="form-control" />
+                <span asp-validation-for="Endereco" class="text-danger"></span>
+            </div>
+         
+            <div>
+                &nbsp;
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Ativo" /> @Html.DisplayNameFor(model => model.Ativo)
+                </label>
+            </div>
+
+            <div class="form-group" style="margin:5px;">
+                <input type="submit" value="Adicionar" class="btn btn-success" />
+                <a class="btn btn-info" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            ValorNaoPermitido();
+        });
+    </script>
+}

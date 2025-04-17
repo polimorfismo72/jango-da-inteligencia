@@ -1,0 +1,86 @@
+﻿@using DevJANGO.App.Extensions
+@model PagedViewModel<AlunoMatriculadoViewModel>
+@{
+    ViewData["Title"] = "Lista de Matriculas";
+    Layout = "_MatriculaPendente";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"] Pendentes na Etapa III</h1>
+   
+    <div class="row align-items-center" style="margin: 6px;">
+        <div class="row">
+            <div class="col-lg-2 col-sm-2">
+                <a class="btn btn-info" asp-action="CreateEtapaTres">Nova Matricula</a>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <p style="margin: 7px;">
+                    @Model.List.Count() alunos
+                </p>
+
+            </div>
+            <div class="col-lg-8 col-sm-8">
+                <form method="get" asp-controller="AlunoMatriculados" asp-action="IndexMatriculaPendenteEtapaTres" class="search">
+                    <div class="input-group w-100">
+                        <input type="text" id="q" name="q" class="form-control" value="@ViewBag.Pesquisa" placeholder="Procure pelo nome, pelo número do documento ou pelo código do aluno!">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+   
+    <table class="table table-responsive-sm table-hover">
+            <partial name="_CabecalhoIndex" />
+        <tbody>
+            @if (Model.List.Count() != 0)
+            {
+                    @foreach (var aluno in Model.List)
+                {
+                     <tr>
+                         <td>
+                            <img src="~/imagens/@aluno.Imagem" alt="@aluno.Imagem" style="width: 100px; height: 90px" />
+                        </td>
+                        <td>
+                            @aluno.Nome
+                        </td>
+                        <td>
+                            @aluno.AnoLetivo
+                        </td>
+                        <td>
+                            @aluno.NomeClasse
+                        </td>
+                        <td>
+                            @aluno.NomeClasse
+                        </td>
+                        <td>
+                            @if (aluno.Estado == true)
+                            {
+                                <span style="color: #0d6efd;">Matricula Finalizada</span>
+                            }
+                            else
+                            {
+                                <span class="text-warning">Matricula Pendente</span>
+                            }
+                        </td>
+                        <td class="text-end">
+                            <a class="btn btn-info" asp-controller="AlunoMatriculados" asp-action="Details" asp-route-id="@aluno.Id"><spam class="fa fa-search"></spam></a>
+                            <a class="btn btn-warning" asp-controller="AlunoMatriculados" asp-action="EditEtapaTres" asp-route-id="@aluno.Id"><spam class="fas fa-donate"></spam></a>
+                        </td>
+                    </tr>
+                    }
+                }
+                else
+                {
+                <partial name="_PesquisaNaoEncontrada" />
+                }
+        </tbody>
+    </table>
+    <vc:paginacao modelo-paginado="@Model"></vc:paginacao>
+   
+</div>
+
